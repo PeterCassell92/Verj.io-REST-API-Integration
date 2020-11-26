@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <restResource id="GithubOAuthAlt" dateCreated="2020-11-25T14:58:06.182Z">
+        <baseURI>https://api.github.com</baseURI>
+        <endpoints>
+            <endpoint name="" description="" path="" method="GET" requestField="" responseField="" debug="false" responseCode="&amp;&amp;responseStatusCode"/>
+            <endpoint name="CreateRepository" description="" path="/user/repos" method="POST" requestField="" responseField="&amp;&amp;responseBody" debug="true" responseCode="&amp;&amp;responseStatusCode">
+                <requestHeaders>
+                    <requestHeader name="Content-Type" value="application/x-www-form-urlencoded"/>
+                    <requestHeader name="Authorization" value="Bearer &amp;&amp;accessToken"/>
+                </requestHeaders>
+                <parameters>
+                    <parameter name="name" value="&amp;&amp;name" queryParam="true"/>
+                </parameters>
+                <endpointSecurity httpBasicAuthenticationUsername="" httpAuthenticationType="Basic Authentication" oAuthConfigName="Github" oAuthScope="" oAuthUsername=""/>
+            </endpoint>
+        </endpoints>
+        <fields>
+            <field id="name"/>
+            <field id="responseBody"/>
+            <field id="responseStatusCode"/>
+            <field id="accessToken"/>
+        </fields>
+    </restResource>
+</ebase>

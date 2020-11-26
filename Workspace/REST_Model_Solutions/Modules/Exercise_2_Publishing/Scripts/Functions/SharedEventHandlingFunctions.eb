@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <script contentType="Javascript" preferredComponentPath="/PublishedAPIs/WebServices/Rest/CardDeck" id="SharedEventHandlingFunctions" dateCreated="2020-11-13T17:08:26.517Z">
+        <scriptText>importPackage(com.ebasetech.xi.api);
+importPackage(com.ebasetech.xi.services);
+//Intended for checks which are common across multiple endpoint events. I.e. checking Basic Authentication credentials. Checking method is allowed etc.
+
+/**@desc compares the submitted basic authentication credentials (decrypted) for exact match with the username and password as set in the properties file
+ * @param credentials = basicAuthentication credentials object
+ */
+function checkBasicAuthentication(credentials){
+
+	if(!credentials){
+		throw new Error(&quot;401:Credentials not Provided&quot;);
+	}
+	//only keep username and password details in a separate file. not in the source code.
+	if(credentials.getUsername() == getProperty('basicAuthUsername') &amp;&amp; credentials.getPassword() == getProperty('basicAuthPassword')){
+		return true;
+	}
+	else{
+		throw new Error(&quot;401:Invalid Credentials&quot;);
+	}
+}
+
+/**@desc standardised way of setting an error response from an error object
+ * @param error Error Object - with error.message in the format &quot;errorcode:errormessage&quot;
+ */
+function setErrorResponse(error){
+	var arr = error.message.split(':');
+
+	//the message has been formatted correctly
+	if(arr.length == 2){
+		 form.rest.setResponseStatus(arr[0]);
+
+  	form.rest.setResponseBody(JSON.stringify({
+    	msg: arr[1]
+ 		}));
+	}
+	//otherwise this is going to be an uncaught (server) error.
+	else{
+		log(error.message);
+		form.rest.setResponseStatus(500);
+
+		form.rest.setResponseBody(JSON.stringify({
+    	msg: error.message
+ 		}));
+	}
+}
+
+</scriptText>
+    </script>
+</ebase>

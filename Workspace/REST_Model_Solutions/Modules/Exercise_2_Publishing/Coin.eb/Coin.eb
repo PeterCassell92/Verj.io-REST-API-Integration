@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <RESTfulWebService enabled="true" preferredScriptFolder="/Modules/Exercise_2_Publishing/Scripts/Events" id="Coin" dateCreated="2020-11-20T18:37:23.758Z">
+        <sharedFunctionScripts>
+            <sharedFunctionScript path="/Modules/Exercise_2_Publishing/Scripts/Functions/SharedEventHandlingFunctions"/>
+            <sharedFunctionScript path="/Modules/Exercise_2_Publishing/Scripts/Functions/SharedFunctions"/>
+        </sharedFunctionScripts>
+        <restfulEndpoints>
+            <endpoint name="CoinFlip" endpointEvent="/Modules/Exercise_2_Publishing/Scripts/Events/CoinFlip" path="/v1/flip" contentType="">
+                <methods>
+                    <method>GET</method>
+                </methods>
+                <endpointDocumentation summary="Returns the outcome of a fair coin flip" produces="application/json">
+                    <responsesDocumentation>
+                        <responseDocumentation status="200" description="Coin Flip Outcome Returned" reference="Flip"/>
+                    </responsesDocumentation>
+                </endpointDocumentation>
+            </endpoint>
+        </restfulEndpoints>
+        <documentation title="Coin" version="v1" produces="application/json">
+            <description>API for Coin Operations</description>
+            <definitions>
+                <definition name="Flip">
+                    <xmlData>&lt;field description=&quot;&quot; name=&quot;root&quot; nodeType=&quot;0&quot; reference=&quot;&quot; required=&quot;false&quot; title=&quot;&quot; type=&quot;&quot;&gt;&#xD;
+    &lt;field description=&quot;&quot; name=&quot;outcome&quot; nodeType=&quot;0&quot; reference=&quot;&quot; required=&quot;false&quot; title=&quot;&quot; type=&quot;string&quot;/&gt;&#xD;
+&lt;/field&gt;&#xD;
+</xmlData>
+                </definition>
+            </definitions>
+        </documentation>
+    </RESTfulWebService>
+</ebase>

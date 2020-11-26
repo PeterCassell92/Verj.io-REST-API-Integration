@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ebase version="5.4.0">
+            
+    
+    <script contentType="Javascript" dateCreated="2018-01-27T23:54:55.337Z" id="loginFunctions" preferredComponentPath="/Modules/Shared/Components/Header/header">
+                        
+        
+        <scriptText>importPackage(com.ebasetech.xi.api);
+importPackage(com.ebasetech.xi.services);
+
+// user registration
+function register() {
+	// if we're attempting to register a user we should make sure the registration controls are showing
+	clientShow(controls.registerPanel);
+	clientHide(controls.loginBtnPnl);
+	
+	// perform field validation first, stop if invalid
+	var valid = true;
+	if(!customValidation(controls.emailFld))			valid = false;
+	if(!customValidation(controls.passFld))				valid = false;
+	if(!customValidation(controls.retypePassFld))	valid = false;
+	if(!customValidation(controls.fnameFld))			valid = false;
+	if(!customValidation(controls.lnameFld))			valid = false;
+	
+	// check if both password fields match
+	if (fields.password.value != fields.retypePassword.value) {
+		// add invalid class to the ctrl
+	  controls.retypePassFld.removeCssClass('is-valid');
+	  controls.retypePassFld.addCssClass('is-invalid');
+	  controls.retypePassFld.addErrorMessage("Password fields must match", false);
+
+	  valid = false;
+	}
+
+	// if it's not valid return false to the client
+	if(!valid) return false;
+
+	
+	// all fields passed validation so carry on registration process
+	try {
+		var userExists = false;
+		
+		// setup query to see if an account already exists with the same email
+		var sql = "select u.user_id as \"user_id\" from users u where username = '" + fields.email.value + "'";
+		
+		services.database.executeSelectStatement(dbConnection, sql, function(c){
+			userExists = c.user_id;
+		});
+
+		if(userExists){
+			fields.user_id.value = userExists;
+
+			controls.emailFld.removeCssClass('is-valid');
+			controls.emailFld.addCssClass('is-invalid');
+  			controls.emailFld.addErrorMessage("This email is already registered, please login.", false);
+  			return false;
+		}
+		// proceed with the registration
+		else {
+			// generate a new user id from the sequence manager	
+			fields.user_id.value = system.sequenceManager.sequence("REST_Model_Solutions_Users");
+			
+			// encrypt the password before saving
+			fields.encryptedPassword.value = services.encryption.encryptAES(fields.password.value);
+
+			// insert a user
+			resources.user.insert();
+
+			// finally send the user activation email
+			sendConfirmationEmail();
+		}
+
+		clearFields([
+			fields.email,
+			fields.password,
+			fields.encryptedPassword,
+			fields.retypePassword,
+			fields.firstName,
+			fields.lastName
+		]);
+	} 
+	catch (e) {
+		log("User Reg error ################");
+		for(var prop in e){
+			log(prop + ": " + e[prop]);
+		}
+		log("###########################");
+		system.transactionManager.rollbackAndRestartTransaction();
+		return false;
+	}
+}
+
+// user log on
+function login() {
+	// if we're attempting to login a user we should make sure the registration controls are hidden
+	clientHide(controls.registerPanel);
+	clientShow(controls.loginBtnPnl);
+	
+	// call logon service to check the user's login attempt passing in username and password
+   try {
+		// execute the logon service
+      system.securityManager.logon("REST_Model_Solutions_LogonService", [
+         ["", fields.email.value],
+         ["", fields.password.value]
+      ]);
+
+		// login successful, change the display
+		// hide the login panel, show the logout button
+		controls.loginPnl.hide();
+		controls.logoutPnl.show();
+		controls.userTxt.text.setText("Hello "+system.securityManager.getCredential("firstname"));
+		// rebuild the menu - the menu content depends on the logged in user (their roles, that is)
+		fields.menu.value = getMenu(system.securityManager.userName,0); 
+      
+		// return success to the client
+		return {success: true};
+   }
+   catch(e) {
+	    // there was an error
+		log("ERROR: "+e.message);
+		
+		// if this is a message for an unconfirmed email, send a new email
+		if(e.javaException.errorCode == "999992"){
+			try{
+				sendConfirmationEmail();
+			}
+			catch(e){
+				log("ERROR: sending activation email " + e); 
+			}
+		}
+
+		// return message to the client
+		return {
+			success: false,
+			message: e.javaException.message
+		}
+	}
+}
+
+// request password reset
+function requestPasswordReset(){
+	// if we're attempting to reset a password we should make sure the registration controls are hidden
+	clientHide(controls.registerPanel);
+	clientShow(controls.loginBtnPnl);
+
+	try{
+		if(validateField(fields.email)){
+			// null the user id, we will start this action only on the email address entered
+			fields.user_id.value = null;
+			
+			sendPasswordResetEmail();
+
+			return {
+				success: true,
+				message: "Password reset requested"
+			};
+		}
+		else{
+			throw new Error("No email address given.");
+		}
+	}
+	catch(e){
+		// there was an error
+		log("ERROR: " + e);
+
+		return {
+			success: false,
+			message: e.message
+		}
+	}
+}
+
+// a helper function on top of the sharedValidation functions
+function customValidation(ctrl){
+	var valid = validateField(ctrl);
+	if (!valid) {
+	  // add invalid class to the ctrl
+	  ctrl.removeCssClass('is-valid');
+	  ctrl.addCssClass('is-invalid');
+	    return false;
+   }
+	else {
+		ctrl.removeCssClass('is-invalid');
+		ctrl.addCssClass('is-valid');
+		return true;
+	}
+}
+
+// 
+function clearFields(flds){
+	ctrls = flds.map(function(fld){
+		fld.value = null;
+		return fld.getFieldControl() || null;
+	}).filter(function(x){return x;});
+
+	clearValidation(ctrls);
+}
+
+// clear all bootstrap validation classes from each control in the passed in array of controls
+function clearValidation(ctrls){
+	for each (var ctrl in ctrls) {
+		ctrl.removeCssClass('is-invalid');
+ 		ctrl.removeCssClass('is-valid');
+	}
+}
+
+// save parent menu of the last clicked menu item to session state
+function saveParentMenuIDs(parentMenuIDs) {
+	// once the header state has changed we must set it back to the session
+	client.httpSession.setAttribute('headerState',
+	 				// get the header state
+	 				client.httpSession.getAttribute('headerState')
+	 																		// set the menu ids into the header state
+	 																		.setParentMenuIDs(parentMenuIDs)
+	);
+}
+
+// called from client whenever the screen breakpoint size has changed, e.g. from sm to xl. This function should be overridden at the form level.
+function breakpointRangeChanged() {}
+
+</scriptText>
+                    
+    
+    </script>
+        
+
+</ebase>

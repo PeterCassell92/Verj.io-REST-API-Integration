@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.4.0">
+    <emailResource accountName="verjSamples" from="no-reply@myOrganisation.com" to="&amp;&amp;emailAddress" subject="&amp;&amp;subject" critical="true" html="true" id="genericEmail" dateCreated="2018-03-20T12:51:03.919Z">
+        <message>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color:#f8f9fa;font-family: 'Lato',Tahoma,sans-serif;font-size: 16px;"&gt;
+&lt;table width="100%" border="0" cellspacing="0" cellpadding="0" class="wrapper"&gt;&lt;tr&gt;&lt;td  align="center" valign="top" style="text-align:center;"&gt;
+&lt;table border="0" cellspacing="0" cellpadding="0" class="main" style="text-align: left; margin-left: auto; margin-right: auto;background-color: #ffffff;MAX-WIDTH:600px;"&gt;
+&lt;tr&gt;&lt;td style="PADDING: 40px;"&gt;
+&lt;div class="messageContent"&gt;
+	&amp;&amp;messageText
+&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/table&gt;
+
+&lt;/body&gt;&lt;/html&gt;</message>
+        <fields>
+            <field id="emailAddress" required="true"/>
+            <field id="messageText" required="true"/>
+            <field id="subject" required="true"/>
+        </fields>
+    </emailResource>
+</ebase>

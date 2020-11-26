@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fields>
+    <field name="githubOAuth" type="OBJECT" labelTextRef="Txt7mdW7m" displayType="TEXT" useFieldset="false"/>
+    <field name="newRepositoryName" type="CHAR" labelTextRef="Txt8om1gB" displayType="TEXT" useFieldset="false"/>
+    <field name="requestBody" type="CHAR" labelTextRef="Txt6UVqu3" displayType="TEXT" useFieldset="false"/>
+    <field name="responseBody" type="CHAR" labelTextRef="Txt75f5Or" displayType="TEXT" useFieldset="false"/>
+    <field name="responseStatus" type="CHAR" labelTextRef="Txt9mfLq5" displayType="TEXT" useFieldset="false"/>
+</fields>

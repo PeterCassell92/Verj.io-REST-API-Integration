@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page name="DUMMY_PAGE_03102003" pageHeaderTextRef="Txt5qShOS" pageInfoTextReference="Txt18LvbL" pageTrailerTextReference="TxtJ6ozo" nextPageTextReference="Txt72Nc8Q" prevPageTextReference="Txt3f0dTj">
+    <pageContents>
+        <component ctrl="headerComponent" inheritMsg="true" outputType="0" pdfFooterText="LocalTxtAtpuDl" pdfHeaderText="LocalTxt1R6rO7" uid="JF0mg9ID">
+            <header borderColor="@0" borderRadius="@0" borderStyle="@0" borderWidth="@0" bottomBorderWidth="@0" cssClass="sticky-top" ctrl="headerPanel" leftBorderWidth="@0" rightBorderWidth="@0" topBorderWidth="@0" uid="N2j91W4A">
+                <rootHtmlElementProperties idLocator="header" jQueryEventHandlers="$;ready;// bind to the event that fires when the login panel is shown, focus to first field&#xA;$('.dropdown-menu').parent().on('shown.bs.dropdown', function(e){&#xA;&#x9;$(this).children('.dropdown-menu').find('input').first().focus();&#xA;});"/>
+                <nav cssClass="navbar navbar-dark bg-primary navbar-expand-sm" ctrl="nav" propertySet="navbar" uid="JEwOk69q">
+                    <hyperlink cssClass="navbar-brand" ctrl="navbarBrand" href="#" text="LocalTxt7TMj33_2" title="LocalTxt69wK5K_2" uid="LcFuhqIA" useExternalURL="true">
+                        <rootHtmlElementProperties classLocator="navbar-brand"/>
+                    </hyperlink>
+                    <button bootstrapStyle="@0" buttonText="LocalTxt9bQ2hV" ctrl="navbarToggler" mouseOverText="LocalTxt4xwj9i" uid="GSl6yfua">
+                        <rootHtmlElementProperties classLocator="navbar-toggler navbar-toggler-icon" customAttributes="type=&quot;button&quot;, data-toggle=&quot;collapse&quot;, data-target=&quot;#myNavbar&quot;, aria-label=&quot;menu toggle&quot;"/>
+                    </button>
+                    <panel cssClass="collapse navbar-collapse" ctrl="navbarCollapsible" uid="IPXTA86c">
+                        <rootHtmlElementProperties classLocator="collapse navbar-collapse" idLocator="myNavbar"/>
+                        <panel cssClass="navbar-nav" ctrl="PanMyFlh" uid="Nt2UdCx9">
+                            <html ctrl="menuHTML" default="L" htmlText="LocalTxtAkSfXq" uid="GnAiZmIL"/>
+                        </panel>
+                        <panel cssClass="navbar-nav ml-auto" ctrl="PantyCli" uid="RK1K0Bdd">
+                            <panel cssClass="dropdown order-1" ctrl="loginPnl" uid="Jlrb5GOh">
+<button bootstrapStyle="Outline Light" buttonText="LocalTxt21KC8P" cssClass="dropdown-toggle" ctrl="ButFApmT" mouseOverText="LocalTxtJKvJM" uid="ASUyurWc">
+    <rootHtmlElementProperties customAttributes="data-toggle=&quot;dropdown&quot;"/>
+</button>
+<panel cssClass="dropdown-menu dropdown-menu-right mt-1 p-3" ctrl="loginDropdown" uid="My5HwjTt" width="300px">
+    <field buttonText="LocalTxt3mfv94" ctrl="emailFld" displayInfoText="false" displayLabelText="false" field="email" modifiers="mandatory, email" uid="22q2Txq2">
+        <editorHtmlElementProperties customAttributes="placeholder=&quot;Email&quot;"/>
+    </field>
+    <field buttonText="LocalTxt7oHMZ6_2" ctrl="passFld" displayInfoText="false" displayLabelText="false" field="password" modifiers="mandatory, password" uid="BsoRozC5">
+        <editorHtmlElementProperties customAttributes="placeholder=&quot;Password&quot;"/>
+        <rootHtmlElementProperties customAttributes="@0"/>
+    </field>
+    <panel ctrl="registerPanel" style="display:none;" uid="HffBPKOF">
+        <layoutProperties>
+            <CUSTOM template="## !Caution: change the logic of this template with care as it can affect the behaviour of your Ebase Xi system.&#xA;## Loop through all child controls&#xA;#foreach( $ctrl in $child_controls )&#xA;&#x9;## Write out any pending messages&#xA;&#x9;#if ( $ctrl.messagesShowing )&#xA;&#x9;&#x9;$MESSAGES&#xA;&#x9;#end&#xA;&#x9;## Only write a control if it's not hidden&#xA;&#x9;#if ( $ctrl.showing )&#xA;&#x9;&#x9;## For Field Controls, $LABEL, $EDITOR and $HELP can be separately configured&#xA;&#x9;&#x9;#if ($ctrl.elementType == &quot;Field Control&quot;)&#xA;&#x9;&#x9;&#x9;&lt;div&gt;&#xA;&#x9;&#x9;&#x9;$FIELD_HEADER&#xA;&#x9;&#x9;&#x9;## Write out the field label&#xA;&#x9;&#x9;&#x9;$LABEL&#xA;&#x9;&#x9;&#x9;## For list fields, the list items can be separately configured using $LIST_BUTTON and $LIST_LABEL&#xA;&#x9;&#x9;&#x9;#if ($ctrl.editableRadioOrCheckboxList)&#xA;&#x9;&#x9;&#x9;&#x9;$LIST_HEADER&#xA;&#x9;&#x9;&#x9;&#x9;&lt;ul style=&quot;list-style-type:none;margin:0;display:inline-block;&quot;&gt;&#xA;&#x9;&#x9;&#x9;&#x9;#foreach( $list_item in $list_items )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;li&gt;$LIST_BUTTON $LIST_LABEL&lt;/li&gt;&#xA;&#x9;&#x9;&#x9;&#x9;#end&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/ul&gt;&#xA;&#x9;&#x9;&#x9;&#x9;$LIST_TRAILER&#xA;&#x9;&#x9;&#x9;#else&#xA;&#x9;&#x9;&#x9;&#x9;## Write out the field editor for non-list fields&#xA;&#x9;&#x9;&#x9;&#x9;&lt;div&gt;$EDITOR&lt;/div&gt;&#xA;&#x9;&#x9;&#x9;#end&#xA;&#x9;&#x9;&#x9;## Write out field help&#xA;&#x9;&#x9;&#x9;&lt;div&gt;$HELP&lt;/div&gt;&#xA;&#x9;&#x9;&#x9;$FIELD_TRAILER&#xA;&#x9;&#x9;&#x9;&lt;/div&gt;&#x9;&#x9;#else&#xA;&#x9;&#x9;&#x9;## Write all controls excluding Field Controls&#xA;&#x9;&#x9;&#x9;$CONTROL&#xA;&#x9;&#x9;#end&#xA;&#x9;#end&#xA;#end&#xA;"/>
+        </layoutProperties>
+        <rootHtmlElementProperties idLocator="registrationPnl"/>
+        <field buttonText="LocalTxt6wTMyc" ctrl="retypePassFld" displayInfoText="false" displayLabelText="false" field="retypePassword" modifiers="mandatory,password" uid="M49opNTd">
+            <editorHtmlElementProperties customAttributes="placeholder=&quot;Retype Password&quot;,type=&quot;password&quot;"/>
+        </field>
+        <field buttonText="LocalTxt2CuHfJ" ctrl="fnameFld" displayInfoText="false" displayLabelText="false" field="firstName" modifiers="mandatory" uid="InunbNhQ">
+            <editorHtmlElementProperties customAttributes="placeholder=&quot;First Name&quot;"/>
+        </field>
+        <field buttonText="LocalTxtcyeTA" ctrl="lnameFld" displayInfoText="false" displayLabelText="false" field="lastName" modifiers="mandatory" uid="Rnys2sVX">
+            <editorHtmlElementProperties customAttributes="placeholder=&quot;Last Name&quot;"/>
+        </field>
+        <panel cssClass="d-flex justify-content-between align-items-center" ctrl="PanDK3cE_5" uid="BJj1khWz">
+            <button buttonText="LocalTxt2aIFjB_2" cssClass="btn btn-primary" ctrl="loginButton_2" mouseOverText="LocalTxt7klR6n_2" propertySet="btn-primary" uid="PdPerpn2">
+                <rootHtmlElementProperties customAttributes="aria-label=&quot;Register&quot;" htmlEventHandlers=";// call the register function on the server.&#xA;if (!$eb.executeFunction('register', null, true, true)) { &#xA;//&#x9;$eb.executeFunction('preserveDropdown', null, true);  &#xA;&#x9;// registration attempt failed so issue an error message&#xA;&#x9;bootstrapAlert('#loginErrorMesssage','Registration Error. Please try again.',3000);&#xA;}&#xA;else {&#xA;&#x9;// registration attempt successful so issue an success message&#xA;&#x9;bootstrapAlert('#registerSuccessMesssage','Registration Succesful. Please check your emails for an account confirmation link.',6000);&#xA;&#x9;// and reapply the drop down menu events (because the menu may well have changed now)&#xA;&#x9;dropdownMenuEvents();&#xA;}&#xA;&#xA;e.stopImmediatePropagation();" idLocator="registerBtn" jQueryEventHandlers="$;click;// call the register function on the server.&#xA;if (!$eb.executeFunction('register', null, true, true)) {  &#xA;&#x9;// registration attempt failed so issue an error message&#xA;&#x9;bootstrapAlert('#loginMessage', 'danger', 'Registration Error. Please try again.',3000);&#xA;}&#xA;else {&#xA;&#x9;// registration attempt successful so issue an success message&#xA;&#x9;bootstrapAlert('#loginMessage', 'success', 'Registration Succesful. Please check your emails for an account confirmation link.',6000);&#xA;&#x9;// and reapply the drop down menu events (because the menu may well have changed now)&#xA;&#x9;dropdownMenuEvents();&#xA;}&#xA;&#xA;e.stopImmediatePropagation();&#xA;&#xA;return false;"/>
+            </button>
+            <hyperlink cssClass="ml-5" ctrl="regCancelTxt" href="#" text="LocalTxt8EQivr_2" title="LocalTxt8hL9hJ_2" uid="GzcxCwge" useExternalURL="true">
+                <rootHtmlElementProperties htmlEventHandlers="@0" idLocator="regCncl" jQueryEventHandlers="$;click;// hide the rest of the registration fields&#xA;$('#registrationPnl').slideUp();&#xA;$('#loginBtnPnl').slideDown();&#xA;&#xA;// clear validation in the login panel&#xA;clearValidation('#loginPnl');&#xA;&#xA;e.stopImmediatePropagation();"/>
+            </hyperlink>
+        </panel>
+    </panel>
+    <panel ctrl="loginBtnPnl" uid="NuUUha8h">
+        <rootHtmlElementProperties idLocator="loginBtnPnl"/>
+        <panel cssClass="d-flex justify-content-between align-items-end" ctrl="PanDK3cE_3" uid="EEmdRplc">
+            <button buttonText="LocalTxt2aIFjB" cssClass="btn btn-primary" ctrl="loginButton" mouseOverText="LocalTxt7klR6n" propertySet="btn-primary" uid="FlFGHhP">
+                <rootHtmlElementProperties customAttributes="aria-label=&quot;Login&quot;" htmlEventHandlers=";// call the login function on the server.&#xA;// NB. we submit all page data with the call but don't ask for a screen refresh. We handle the posting&#xA;// of any login messages locally on the browser&#xA;//&#xA;if (!$eb.executeFunction('login', null, true, true)) {   &#xA;//&#x9;$eb.executeFunction('preserveDropdown', null, true);&#xA;&#x9;// login attempt failed so issue an error message&#xA;&#x9;bootstrapAlert('#loginErrorMesssage','Error logging in. Please try again.',3000);&#xA;}&#xA;else {&#xA;&#x9;// the log in was good so hide the login and show the logout buttons&#xA;&#x9;$eb.executeFunction('loggedInDisplay', null, true);&#xA;&#x9;// and reapply the drop down menu events (because the menu may well have changed now)&#xA;&#x9;dropdownMenuEvents();&#xA;}&#xA;&#xA;// prevent verj.io from submitting the form, which would cause it to redraw the page and lose&#xA;// the dropped down login screen and login response message&#xA;return false;" idLocator="loginBtn" jQueryEventHandlers="$;click;// call the login function on the server.&#xA;&#xA;var res = $eb.executeFunction('login', null, true, true);&#xA;&#xA;if (!res.success) {   &#xA;//&#x9;$eb.executeFunction('preserveDropdown', null, true);&#xA;&#x9;// login attempt failed so issue an error message&#xA;&#x9;bootstrapAlert('#loginMessage', 'danger', res.message,3000);&#xA;}&#xA;else {&#xA;&#x9;// and reapply the drop down menu events (because the menu may well have changed now)&#xA;&#x9;dropdownMenuEvents();&#xA;}&#xA;&#xA;// prevent verj.io from submitting the form, which would cause it to redraw the page and lose&#xA;// the dropped down login screen and login response message&#xA;e.stopImmediatePropagation();&#xA;&#xA;return false;"/>
+            </button>
+            <panel cssClass="d-flex flex-column text-right" ctrl="PanaQHK9" uid="D18IMwl9">
+                <hyperlink cssClass="@0" ctrl="Lnk5mZjF" href="#" text="LocalTxtA51xxi" title="LocalTxt1Hh7Jl" uid="Ayt89y9S" useExternalURL="true">
+                    <rootHtmlElementProperties htmlEventHandlers="@0" idLocator="reg" jQueryEventHandlers="$;click;// show the rest of the registration fields&#xA;$('#registrationPnl').slideDown();&#xA;$('#loginBtnPnl').slideUp();&#xA;&#xA;// clear validation in the login panel&#xA;clearValidation('#loginPnl');&#xA;&#xA;e.stopImmediatePropagation();"/>
+                </hyperlink>
+                <hyperlink ariaLabelText="LocalTxt8UHNNB" ctrl="Lnktxc0H" href="#" text="LocalTxt8MplZ3" title="LocalTxtATdx4S" uid="5NyKWpnd" useExternalURL="true">
+                    <rootHtmlElementProperties idLocator="pwdReset" jQueryEventHandlers="$;click;// call the password reset request function on the server&#xA;&#xA;var res = $eb.executeFunction('requestPasswordReset', null, false, true);&#xA;&#xA;if (!res.success) {   &#xA;&#x9;// request failed so issue an error message&#xA;&#x9;bootstrapAlert('#loginMessage', 'danger',res.message,3000);&#xA;}&#xA;else {&#xA;&#x9;// request successful, show a message&#xA;&#x9;bootstrapAlert('#loginMessage', 'info',res.message,3000);&#xA;}&#xA;&#xA;// prevent verj.io from submitting the form, which would cause it to redraw the page and lose&#xA;// the dropped down login screen and login response message&#xA;e.stopImmediatePropagation();&#xA;&#xA;//return false;"/>
+                </hyperlink>
+            </panel>
+        </panel>
+    </panel>
+    <panel cssClass="alert alert-danger mt-2 mb-0" ctrl="loginMessage" style="display: none;" uid="HgZwK1TR">
+        <rootHtmlElementProperties idLocator="loginMessage"/>
+    </panel>
+</panel>
+                            </panel>
+                            <panel ctrl="logoutPnl" hidden="true" uid="BD5AoW1Q">
+<panel cssClass="dropdown-divider d-sm-none" ctrl="PanfDwG1_2" uid="6j4FOSLE"/>
+<text cssClass="text-light mr-2" ctrl="userTxt" text="LocalTxt3wD94f" uid="ICx2Qeza"/>
+<hyperlink cssClass="nav-link d-inline-block" ctrl="logoutLink" href="REST_Model_Solutions_home.eb" onClickEvent="/Modules/Shared/Components/Header/Server/Scripts/Events/logout" propertySet="nav-link" text="LocalTxtpBBLX_10" title="LocalTxt3UESTF_2" uid="ryIq30a"/>
+                            </panel>
+                        </panel>
+                    </panel>
+                </nav>
+            </header>
+            <html ctrl="breadCrumbHTML" default="L" htmlText="LocalTxt3yFliF" uid="ROQnKMhR"/>
+            <panel cssClass="d-none" ctrl="Pan1aAXs" uid="6AL9UwKo">
+                <field buttonText="LocalTxt7N632B" ctrl="Fld2smOt" field="componentPrefix" uid="EKeLLCY4">
+                    <editorHtmlElementProperties idLocator="cpID"/>
+                </field>
+                <field beforeEvent="/Modules/Shared/Components/Header/Server/Scripts/Events/eventFieldProcessing" buttonText="LocalTxt30vmJr" ctrl="Fld2c0As" field="eventField" uid="1FpsEpjq"/>
+                <field buttonText="LocalTxtA4HmrB" ctrl="Fldyxhd4" field="windowResizeEvent" uid="IBclVb9Q">
+                    <editorHtmlElementProperties idLocator="windowResizeEvent"/>
+                </field>
+                <field buttonText="LocalTxt4cbcub" ctrl="Fld14oYZe" field="range" uid="LTHUYZxd">
+                    <editorHtmlElementProperties idLocator="range"/>
+                </field>
+            </panel>
+        </component>
+    </pageContents>
+</page>

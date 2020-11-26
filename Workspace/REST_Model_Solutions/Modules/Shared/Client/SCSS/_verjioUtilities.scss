@@ -1,0 +1,146 @@
+
+// add some helpful extra ultility classes to bootstrap
+//-----------------------------------------------
+
+// add classes of the form container-[breakpoint] so that we can transition between container-fluid on small screens to container on bigger screens
+//  eg. a div with .container-fluid.container-md takes the whole width on xs and small screens but centralises content on medium and bigger screens
+.container {
+  @include make-container();
+  
+  @each $breakpoint in map-keys($grid-breakpoints){
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		$current: 0;
+	
+		@each $bp, $container-max-width in $container-max-widths{
+			@if $bp == $breakpoint {
+				$current: 1;
+			}
+			
+			@if $current == 1 {
+				&#{$infix} {
+				  @include media-breakpoint-up($bp) {
+						max-width: $container-max-width;
+				  }
+				}
+			}
+		}
+  }
+}
+
+
+// collapse tables on small screens and down
+@include media-breakpoint-down('sm'){
+	.table{
+		> tbody{
+			> tr{
+				@include make-row();
+				border-bottom: 1px solid #555555;
+				
+				> td {
+					display: block;  
+					width: 100%;
+
+					&:not(.button){
+						div, {
+							display: block;
+							width: 100%;
+						}
+
+						&::before{
+							content: attr(data-eb-colheader);
+							float: left;
+							font-weight: bold;
+							margin-bottom: $spacer * .5;
+							width: 100%;
+						}
+					}
+
+					&.button{
+						> div{
+							width: auto;
+						}
+
+						a::after{
+							content: attr(data-eb-colheader);
+							font-weight: bold;
+							margin-left: $spacer * .5;
+						}
+					}
+				}
+			}
+		}
+
+		> thead {
+			border: none;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+		}
+	}
+}
+
+// fix inputs in tables regardless of screen size
+.table td div{
+	width: 100%;
+}
+
+.table td div input{
+	width: 100%;
+}
+
+
+
+// add submenus to drop downs
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+
+.table td.button{
+	vertical-align: middle;
+}
+
+
+// add classes of the form position-[breakpoint]-[position] and position-[breakpoint]-down-[position]
+//  eg. position-sm-absolute changes an elements position to absolute on small screens and bigger
+//		  position-sm-down-absolute changes an elements position to absolute on small screens and smaller
+$positions: static, relative, absolute, fixed, sticky;
+
+.position {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+		// breakpoint and up
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+				@each $position in $positions {
+				  &-#{$position} { position: $position !important; }
+				}
+		  }
+    }
+    // breakpoint and down
+		&#{$infix}-down {
+      @include media-breakpoint-down($breakpoint) {
+				@each $position in $positions {
+				  &-#{$position} { position: $position !important; }
+				}
+		  }
+    }
+  }
+}

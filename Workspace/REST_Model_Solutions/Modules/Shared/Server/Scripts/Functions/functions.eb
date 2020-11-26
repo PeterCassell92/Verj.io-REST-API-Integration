@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ebase version="5.4.0">
+            
+    
+    <script contentType="Javascript" dateCreated="2018-02-28T10:34:00.760Z" id="functions" preferredComponentPath="/Modules/Shared/Components/Header/header">
+                        
+        
+        <scriptText>importPackage(com.ebasetech.xi.api);
+importPackage(com.ebasetech.xi.services);
+
+var dbConnection = "rest_model_solutions";
+
+// save current form's state
+function saveFormState() {
+	if (client.httpSession.getAttribute('headerState')) {
+		// once the header state has changed we must set it back to the session
+		client.httpSession.setAttribute('headerState',
+	 				// get the header state
+					client.httpSession.getAttribute('headerState')
+																		// save the form state
+																		.saveFormState()
+		);
+	}
+}
+
+// restore current form's state from latest saved snapshot
+function restoreFormState() {
+	if (client.httpSession.getAttribute('headerState')) {
+		client.httpSession.getAttribute('headerState').restoreFormState();
+	}
+}
+
+
+// create a http session object to hold header component state information
+function createHeaderState() {
+	var headerState = function() {
+		// the list of parent menu IDs of the last menu item clicked
+		var parentMenuIDs = '';
+		this.getParentMenuIDs = function() {return parentMenuIDs}
+		this.setParentMenuIDs = function(l) {parentMenuIDs = l; return this;}
+
+		// array to hold form snapshot objects
+		var formStates = [];
+		// method to save a forms current state, i.e. by taking a snapshot and saving the snapshotID
+		this.saveFormState = function() {
+			// remove any existing entries for the calling form
+			for (var i=0; i&lt;formStates.length; i++) {
+				if (formStates[i].getFormID() == system.variables.$FORMID) {
+					// delete snapshot
+					system.snapshotManager.removeSnapshot(formStates[i].getSnapshotID());
+					// remove reference from array
+					formStates.splice(i,1);
+				}
+			}
+			// add a new form state entry
+			formStates.push(new formSnapshot());
+
+			return this;
+		}
+		// method to restore a form's state from the latest snapshot held
+		this.restoreFormState = function() {
+			for (var i=0; i&lt;formStates.length; i++) {
+				if (formStates[i].getFormID() == system.variables.$FORMID) {
+					// get the snapshotID from the array and do the restore
+					system.snapshotManager.restoreSnapshot(formStates[i].getSnapshotID());
+				}
+			}
+		}
+		
+		// local object to hold the latest snapshotID for a form
+		var formSnapshot = function() {
+			// set the current form ID
+			var formID = system.variables.$FORMID;
+			// create a snapshot
+			var snapshotID = system.snapshotManager.createSnapshot(null,null); 
+			this.getFormID = function() {return formID}
+			this.getSnapshotID = function() {return snapshotID}
+		}
+	}
+	client.httpSession.setAttribute('headerState', new headerState());
+}
+
+
+function clientHide(ctrl){
+	// if there is no control or it has no style property, give up
+	if(!ctrl || ctrl.style === undefined) return false;
+
+	// if display none is already set then we're done here
+	if(/display:\s?none/.test(ctrl.style)) return true;
+
+	ctrl.style += "; display: none;";
+	ctrl.style = ctrl.style.replace(/;;/, ";");
+
+	return true;
+}
+
+function clientShow(ctrl){
+	// if there is no control or it has no style property, give up
+	if(!ctrl || ctrl.style === undefined) return false;
+
+	// if there is no style, we're done here
+	if(!ctrl.style) return true;
+
+	// if display none is already set remove it
+	ctrl.style = ctrl.style.replace(/display:\s?none/, "");
+
+	return true;
+}</scriptText>
+                    
+    
+    </script>
+        
+
+</ebase>

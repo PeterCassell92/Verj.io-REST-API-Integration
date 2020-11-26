@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page name="Page_1" pageHeaderTextRef="Txt8PaufS" pageInfoTextReference="Txt6wtLAk" pageTrailerTextReference="Txt7WLsbG" nextPageTextReference="Txt8eRAaj" prevPageTextReference="Txt8wiWls">
+    <pageContents>
+        <page ariaLabelText="LocalTxt66vmHq" ctrl="PagYCc9I" outputType="1" pdfFooterText="LocalTxtAgm2W8" pdfHeaderText="LocalTxt36Nxlp" uid="IxwVSDdb">
+            <bootstrapcontainer ariaLabelText="LocalTxt2LsdDG" ctrl="BsContainerJZcZz" uid="K5fXb0Cu">
+                <panel ariaLabelText="LocalTxt4tMBdQ" cssClass="py-2 w-50" ctrl="PanJIuVY" uid="P0s8O3id">
+                    <field ariaLabelText="LocalTxtcq849" buttonText="LocalTxt8ztVSY" ctrl="FldQnFoq" field="newRepositoryName" placeHolderText="LocalTxtA2XeYQ" requiredText="LocalTxt8PYv3P" uid="SNVscFGG" validationText="LocalTxt4DP7iS"/>
+                    <button ariaLabelText="LocalTxt5Mi2WA" buttonText="LocalTxt7BQq7w" ctrl="ButrOUMu" mouseOverText="LocalTxt1Qb0NW" onClickEvent="/Modules/Exercise_4c_Security/Scripts/Events/createRepository" uid="FsISg7Mn"/>
+                </panel>
+                <message ctrl="githubMsg" modifiers="@0" uid="52fgUlcl"/>
+            </bootstrapcontainer>
+        </page>
+    </pageContents>
+</page>

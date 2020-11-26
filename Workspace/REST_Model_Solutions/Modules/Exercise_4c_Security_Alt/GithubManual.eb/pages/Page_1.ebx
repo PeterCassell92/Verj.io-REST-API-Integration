@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page name="Page_1" pageHeaderTextRef="Txt8PaufS" pageInfoTextReference="Txt6wtLAk" pageTrailerTextReference="Txt7WLsbG" nextPageTextReference="Txt8eRAaj" prevPageTextReference="Txt8wiWls">
+    <pageContents>
+        <page ariaLabelText="LocalTxt66vmHq" ctrl="PagYCc9I" outputType="0" pdfFooterText="LocalTxtAgm2W8" pdfHeaderText="LocalTxt36Nxlp" uid="IxwVSDdb">
+            <bootstrapcontainer ariaLabelText="LocalTxt2LsdDG" ctrl="BsContainerJZcZz" uid="K5fXb0Cu">
+                <bootstraprow ariaLabelText="LocalTxtZC9Ue" ctrl="BsRowCKA4p" uid="F9GIi0nC">
+                    <bootstrapcolumn ariaLabelText="LocalTxt9US22R" ctrl="BsColumn5cshZ" uid="4NdeGP6M">
+                        <button ariaLabelText="LocalTxt9KUr4M" buttonText="LocalTxt743djp" ctrl="ButViQYm" mouseOverText="LocalTxt38PI33" onClickEvent="/Modules/Exercise_4c_Security_Alt/Scripts/Events/manualAuthorizeGithub" uid="GHjIKFVm"/>
+                        <panel ariaLabelText="LocalTxt4tMBdQ" cssClass="py-2" ctrl="PanJIuVY" uid="P0s8O3id">
+                            <field ariaLabelText="LocalTxtcq849" buttonText="LocalTxt8ztVSY" ctrl="FldQnFoq" field="newRepositoryName" placeHolderText="LocalTxtA2XeYQ" requiredText="LocalTxt8PYv3P" uid="SNVscFGG" validationText="LocalTxt4DP7iS"/>
+                            <button ariaLabelText="LocalTxt5Mi2WA" buttonText="LocalTxt7BQq7w" ctrl="ButrOUMu" mouseOverText="LocalTxt1Qb0NW" onClickEvent="/Modules/Exercise_4c_Security_Alt/Scripts/Events/createRepository" uid="FsISg7Mn"/>
+                        </panel>
+                    </bootstrapcolumn>
+                    <bootstrapcolumn ariaLabelText="LocalTxt3SHMK2" ctrl="BsColumnY5P0s" uid="AO69scOU">
+                        <field ariaLabelText="LocalTxt12h2ml" buttonText="LocalTxtAZnqO3" ctrl="FldZr8Kr" displayOnly="true" field="access_token" placeHolderText="LocalTxt8Mx0DH" requiredText="LocalTxtQQLX4" uid="20EG9Rew" validationText="LocalTxt8cJeIG"/>
+                        <field ariaLabelText="LocalTxt4Tryhy" buttonText="LocalTxtK828Y" ctrl="Fld11NnSe" displayOnly="true" field="refresh_token" placeHolderText="LocalTxt5tAS4y" requiredText="LocalTxt5uhX0F" uid="9HEZ5fiU" validationText="LocalTxt7BHY6G"/>
+                        <field ariaLabelText="LocalTxt8iWUp9" buttonText="LocalTxt7TnWw1" ctrl="FldnQd8B" displayOnly="true" field="authSuccess" placeHolderText="LocalTxt5gY4BD" requiredText="LocalTxt8su2NQ" uid="BecnGWBy" validationText="LocalTxt8Is5Cs"/>
+                    </bootstrapcolumn>
+                </bootstraprow>
+                <message ctrl="githubMsg" modifiers="@0" uid="52fgUlcl"/>
+            </bootstrapcontainer>
+        </page>
+    </pageContents>
+</page>

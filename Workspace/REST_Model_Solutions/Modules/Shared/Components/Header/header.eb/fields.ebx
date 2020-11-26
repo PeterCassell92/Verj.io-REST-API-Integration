@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fields>
+    <field name="breadCrumb" type="CHAR" labelTextRef="Txt4AIyvj" displayType="TEXT" id="efb5475c-8e7d-4ee6-b1e4-8f782c051564"/>
+    <field name="componentPrefix" type="CHAR" labelTextRef="Txt8YwhEN" displayType="TEXT" id="6d3ea9a4-5733-4f92-bff2-c5ebc53a9341"/>
+    <field name="confirmationType" type="CHAR" labelTextRef="Txt9krmqZ" displayType="TEXT" id="09579b8f-2cbe-4bef-b186-af1b81c282f9"/>
+    <field name="email" type="CHAR" labelTextRef="Txt9yypTe" displayType="TEXT" displayLength="40" id="ab310992-4690-4c3b-9492-6a523176c00d"/>
+    <field name="emailExpiry" type="DATETIME" labelTextRef="Txt4Me9rs" displayType="TEXT" id="4fe6d286-9994-4f60-9d02-8c4a16d1e037"/>
+    <field name="emailUID" type="CHAR" labelTextRef="Txt7vO1O2" displayType="TEXT" id="a7cbc48d-da11-461f-83e3-81d7835e211a"/>
+    <field name="encryptedPassword" type="CHAR" labelTextRef="Txt6jmPf4" displayType="TEXT" id="c3630742-27ed-4949-b913-8d605492a8f1"/>
+    <field name="eventField" type="CHAR" eventField="true" labelTextRef="Txt9iwAyL" displayType="TEXT" id="aa8f408c-26fc-46cb-8679-21dcee701648"/>
+    <field name="firstName" type="CHAR" labelTextRef="Txt9eQE34" displayType="TEXT" id="4930deb1-87b6-4bda-bec1-f08fc5d83e2c"/>
+    <field name="formDescription" type="CHAR" labelTextRef="Txt15vsYW" displayType="TEXT" id="5510f1de-cae7-435a-8c01-9847f39d9caa"/>
+    <field name="lastName" type="CHAR" labelTextRef="Txtuv6Gm" displayType="TEXT" id="625a6d42-28eb-40a1-a581-8059191dda74"/>
+    <field name="menu" type="CHAR" labelTextRef="TxtAQA5dq" maxLength="2550" displayType="TEXTAREA" displayLength="200" rows="15" id="143c861c-6133-4973-b216-03a082ccaebe"/>
+    <field name="msgSubject" type="CHAR" labelTextRef="Txt4Dj366" displayType="TEXT" id="6dc03e48-3454-43bb-92fe-ebe74764cfb8"/>
+    <field name="msgText" type="CHAR" labelTextRef="Txt5ZGBoy" displayType="TEXT" id="3e5f7d7d-e592-4536-b70c-2d087e8ca362"/>
+    <field name="password" type="CHAR" labelTextRef="TxtLV9SO" displayType="PASSWORD" displayLength="40" id="4d4f0e19-8229-4333-a98d-2af4c9159b01"/>
+    <field name="range" type="CHAR" labelTextRef="Txt17SYzD" displayType="TEXT" id="5957bc29-0702-48ef-bf38-e03a684302ca"/>
+    <field name="retypePassword" type="CHAR" labelTextRef="Txt9BS0pe" displayType="TEXT" id="f3f84f5f-a3fb-46a2-a8ce-360b56b08a1c"/>
+    <field name="user_id" type="INTEGER" labelTextRef="Txt8opwAa" displayType="TEXT" displayLength="17" id="e6af4a61-235e-4211-8907-1312e05fbac8">
+        <validators>
+            <validator type="MAX_DIGITS" value="10"/>
+            <validator type="MAX_LENGTH" value="17"/>
+            <validator type="DEC_DIG"/>
+        </validators>
+    </field>
+    <field name="windowResizeEvent" type="BOOLEAN" labelTextRef="Txt4NoRTm" displayType="TEXT" id="b79bb75b-08d8-4a78-8760-9bdaba3a6d98"/>
+</fields>

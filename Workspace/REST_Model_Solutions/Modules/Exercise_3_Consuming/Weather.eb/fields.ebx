@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fields>
+    <field name="locationId" type="CHAR" labelTextRef="Txt42huCb" displayType="TEXT" useFieldset="false"/>
+    <field name="locationName" type="CHAR" defaultValue="None" labelTextRef="Txtbj5OL" displayType="TEXT" useFieldset="false"/>
+    <field name="queryLocation" type="CHAR" labelTextRef="Txt7KhaHm" displayType="TEXT" useFieldset="false"/>
+    <field name="requestBody" type="CHAR" labelTextRef="TxtAib3LD" displayType="TEXT" useFieldset="false"/>
+    <field name="responseBody" type="CHAR" labelTextRef="Txt8j4eMB" displayType="TEXT" useFieldset="false"/>
+    <field name="responseCode" type="CHAR" labelTextRef="Txt4mqXwC" displayType="TEXT" useFieldset="false"/>
+    <field name="weatherResponse" type="CHAR" labelTextRef="Txt8SOj2O" displayType="TEXT" useFieldset="false"/>
+</fields>

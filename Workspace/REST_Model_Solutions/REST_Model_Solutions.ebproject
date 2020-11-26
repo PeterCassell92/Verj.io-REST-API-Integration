@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project version="5.9.0" name="REST_Model_Solutions" structure="Empty Project">
+    <dependencies>
+        <dependency>VerjSamples</dependency>
+    </dependencies>
+</project>

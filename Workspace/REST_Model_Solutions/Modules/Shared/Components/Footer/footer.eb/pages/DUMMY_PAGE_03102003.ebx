@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page name="DUMMY_PAGE_03102003" pageHeaderTextRef="Txt9HIMwR" pageInfoTextReference="Txt2em2Dz" pageTrailerTextReference="Txt7EkKCw" nextPageTextReference="Txt9Zj3Lp" prevPageTextReference="Txt8SxJA">
+    <pageContents>
+        <component ctrl="CmpB5yOh" inheritMsg="true" outputType="0" pdfFooterText="LocalTxt2OHXDX" pdfHeaderText="LocalTxt3h84M9" uid="BAYRDOAB">
+            <footer cssClass="footer" ctrl="Foot13hH87" uid="IL7yh743">
+                <bootstrapcontainer cssClass="py-3 text-center" ctrl="BsContainerhTMA5" uid="MOdvuM91">
+                    <text cssClass="text-muted" ctrl="Tex12Y945" text="LocalTxt4LwgSt" uid="FGVtbEK2"/>
+                </bootstrapcontainer>
+            </footer>
+        </component>
+    </pageContents>
+</page>

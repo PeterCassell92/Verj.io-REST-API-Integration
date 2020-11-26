@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resourceMappings>
+    <resourceMapping id="Cards">
+        <fieldMapping resourceField="deck_id" field="deckId"/>
+        <fieldMapping resourceField="drawFrom" field="drawFrom"/>
+        <fieldMapping resourceField="drawTo" field="drawTo"/>
+        <fieldMapping resourceField="fromPosition" field="fromPosition"/>
+        <fieldMapping resourceField="requestBody" field="requestBody"/>
+        <fieldMapping resourceField="responseBody" field="responseBody"/>
+        <fieldMapping resourceField="responseStatusCode" field="responseCode"/>
+        <fieldMapping resourceField="toPosition" field="toPosition"/>
+    </resourceMapping>
+    <resourceMapping id="MetaWeather">
+        <fieldMapping resourceField="responseBody" field="responseBody"/>
+        <fieldMapping resourceField="responseStatusCode" field="responseCode"/>
+    </resourceMapping>
+</resourceMappings>

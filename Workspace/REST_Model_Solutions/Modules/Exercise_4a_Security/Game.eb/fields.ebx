@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fields>
+    <field name="deckId" type="INTEGER" defaultValue="1" labelTextRef="Txt9V8pJf" displayType="NUMBER" useFieldset="false"/>
+    <field name="drawFrom" type="CHAR" labelTextRef="Txt4Mh0k5" displayType="SELECT" useFieldset="false" staticList="/Modules/Exercise_4a_Security/Lists/Zones"/>
+    <field name="drawTo" type="CHAR" labelTextRef="Txt3TwvUf" displayType="SELECT" useFieldset="false" staticList="/Modules/Exercise_4a_Security/Lists/Zones"/>
+    <field name="fromPosition" type="CHAR" labelTextRef="Txt9Q9Qeo" displayType="TEXT" useFieldset="false"/>
+    <field name="requestBody" type="CHAR" labelTextRef="TxtAib3LD" displayType="TEXT" useFieldset="false"/>
+    <field name="responseBody" type="CHAR" labelTextRef="Txt8j4eMB" displayType="TEXT" useFieldset="false"/>
+    <field name="responseCode" type="CHAR" labelTextRef="Txt4mqXwC" displayType="TEXT" useFieldset="false"/>
+    <field name="toPosition" type="CHAR" labelTextRef="Txt9ohxE1" displayType="TEXT" useFieldset="false"/>
+</fields>

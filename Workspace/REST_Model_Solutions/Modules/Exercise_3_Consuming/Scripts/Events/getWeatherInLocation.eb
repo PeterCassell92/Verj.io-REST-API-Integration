@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <script contentType="Javascript" preferredComponentPath="/Modules/Exercise_3_Consuming/Weather" id="getWeatherInLocation" dateCreated="2020-11-20T19:55:37.271Z">
+        <scriptText>importPackage(com.ebasetech.xi.api);
+importPackage(com.ebasetech.xi.services);
+
+//check for a location id value
+if(!fields.locationId.value){
+	event.owner.addErrorMessage('No Location Id Found');
+}
+
+var restResponse = services.rest.get('https://www.metaweather.com/api/location/' + fields.locationId.value);
+
+//return the weather state from the response.
+var obj = JSON.parse(restResponse.body);
+log(JSON.stringify(obj, null, 3));
+fields.weatherResponse.value = obj.consolidated_weather[0].weather_state_name;</scriptText>
+    </script>
+</ebase>

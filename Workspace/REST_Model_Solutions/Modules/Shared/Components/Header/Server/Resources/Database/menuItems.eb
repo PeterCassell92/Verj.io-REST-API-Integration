@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><ebase version="5.3.2">
+        
+    <dbResource database="rest_model_solutions" dateCreated="2018-02-28T16:32:25.349Z" id="menuItems" table="true">
+                
+        <columns>menu_item_id, menu_item_text, menu_item_action, format_class</columns>
+                
+        <from>menu_items</from>
+                
+        <fields>
+                        
+            <field id="menu_item_id" key="true" type="INTEGER"/>
+                        
+            <field id="menu_item_text" type="VARCHAR"/>
+                        
+            <field id="menu_item_action" type="VARCHAR"/>
+                        
+            <field id="format_class" type="VARCHAR"/>
+                    
+        </fields>
+            
+    </dbResource>
+    
+</ebase>

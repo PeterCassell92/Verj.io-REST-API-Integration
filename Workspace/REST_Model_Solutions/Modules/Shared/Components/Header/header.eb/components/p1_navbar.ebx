@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><component embedded="true" prefix="p1_navbar">
+        
+    <texts>
+                
+        <text id="Txt8RRFQ9">
+                        
+            <languageText language="EN">Action</languageText>
+                    
+        </text>
+                
+        <text id="Txt8RRFQ9_2">
+                        
+            <languageText language="EN">Another action</languageText>
+                    
+        </text>
+                
+        <text id="Txt8RRFQ9_3">
+                        
+            <languageText language="EN">Something else here</languageText>
+                    
+        </text>
+                
+        <text html="true" id="Txt9jnqXn">
+                        
+            <languageText language="EN">Page 1 &lt;span class="caret"&gt;&lt;/span&gt;</languageText>
+                    
+        </text>
+                
+        <text id="TxtAo81Nz">
+                        
+            <languageText language="EN">Disabled</languageText>
+                    
+        </text>
+                
+        <text id="TxtpBBLX">
+                        
+            <languageText language="EN">Home</languageText>
+                    
+        </text>
+            
+    </texts>
+    
+</component>

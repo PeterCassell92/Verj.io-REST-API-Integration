@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resourceMappings>
+    <resourceMapping id="genericEmail">
+        <fieldMapping resourceField="emailAddress" field="email"/>
+        <fieldMapping resourceField="subject" field="msgSubject"/>
+        <fieldMapping resourceField="messageText" field="msgText"/>
+    </resourceMapping>
+    <resourceMapping id="menuEntries">
+        <tableMapping table="menuEntries"/>
+        <fieldMapping resourceField="entry_menu_id" field="menuEntries-entry_menu_id"/>
+        <fieldMapping resourceField="menu_item_id" field="menuEntries-menu_item_id"/>
+        <fieldMapping resourceField="owning_menu_id" field="menuEntries-owning_menu_id"/>
+    </resourceMapping>
+    <resourceMapping id="menuItems">
+        <tableMapping table="menuItems"/>
+        <fieldMapping resourceField="format_class" field="menuItems-format_class"/>
+        <fieldMapping resourceField="menu_item_action" field="menuItems-menu_item_action"/>
+        <fieldMapping resourceField="menu_item_id" field="menuItems-menu_item_id"/>
+        <fieldMapping resourceField="menu_item_text" field="menuItems-menu_item_text"/>
+    </resourceMapping>
+    <resourceMapping id="menus">
+        <tableMapping table="menus"/>
+        <fieldMapping resourceField="format_class" field="menus-format_class"/>
+        <fieldMapping resourceField="menu_description" field="menus-menu_description"/>
+        <fieldMapping resourceField="menu_id" field="menus-menu_id"/>
+    </resourceMapping>
+    <resourceMapping id="user">
+        <fieldMapping resourceField="username" field="email"/>
+        <fieldMapping resourceField="password" field="encryptedPassword"/>
+        <fieldMapping resourceField="first_name" field="firstName"/>
+        <fieldMapping resourceField="last_name" field="lastName"/>
+        <fieldMapping resourceField="user_id" field="user_id"/>
+    </resourceMapping>
+    <resourceMapping id="userByUsername">
+        <fieldMapping resourceField="username" field="email"/>
+        <fieldMapping resourceField="first_name" field="firstName"/>
+        <fieldMapping resourceField="last_name" field="lastName"/>
+        <fieldMapping resourceField="user_id" field="user_id"/>
+    </resourceMapping>
+    <resourceMapping id="userEmail">
+        <fieldMapping resourceField="type" field="confirmationType"/>
+        <fieldMapping resourceField="expiry" field="emailExpiry"/>
+        <fieldMapping resourceField="email_uid" field="emailUID"/>
+        <fieldMapping resourceField="user_id" field="user_id"/>
+    </resourceMapping>
+    <resourceMapping id="visibleMenuItems">
+        <tableMapping table="visibleMenuItems"/>
+        <fieldMapping resourceField="menu_item_id" field="visibleMenuItems-menu_item_id"/>
+        <fieldMapping resourceField="userId" field="visibleMenuItems-userId"/>
+    </resourceMapping>
+</resourceMappings>

@@ -1,0 +1,64 @@
+
+/* Import a font from google fonts, just add your font name instead of Your+Font+Name and uncomment the line
+ *  Then you'll need to use the font by setting a font-family property
+ *  either in bootstrapVariables or in your own css rule declaration
+ */
+//@import 'https://fonts.googleapis.com/css?family=Your+Font+Name';
+
+
+/* bring in the bootstrap functions and our settings for the bootstrap variables */
+@import "../Bootstrap Source/scss/functions";
+@import "_bootstrapVariables";
+
+
+/* import bootstraps default variables */
+@import "../Bootstrap Source/scss/variables";
+/* import the rest of bootstrap */
+@import "../Bootstrap Source/scss/mixins";
+@import "../Bootstrap Source/scss/bootstrap";
+
+/* some useful extra styling and utilities by Verj.io */
+@import "verjioUtilities";
+
+
+
+/* CSS for a sticky footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+
+/* set the max height for carousels (really this is for "hero" carousels at the top of the page by probably makes sense in other places)
+ *  by default carousels will grow and shrink with the width of the page, maintaining some sort of aspect ratio,
+ *  here we set a maximum height a carousel should be and provide an option to keep a fixed height regardless of width
+ */
+$carousel-height: 40em;
+.carousel-inner{
+	max-height: $carousel-height;
+}
+.carousel-inner.fixed-height{
+	height: $carousel-height;
+}
+
+/* indent blockquotes from both sides and add a left hand border */
+blockquote{
+	margin: 0 1rem 1rem;
+  border-left: solid 0.2em #ccc;
+  padding: 0 1rem;
+}
+
+/* change the styling of close buttons for modals, this works better on coloured modal headers */
+.close, .close:hover{
+	color: inherit;
+	opacity: 1;
+}

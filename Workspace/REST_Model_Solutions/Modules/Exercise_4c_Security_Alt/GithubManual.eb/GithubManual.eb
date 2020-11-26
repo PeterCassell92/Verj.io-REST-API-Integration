@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <webForm formHeaderTextRef="Txt1akk1q" htmlTitleTextRef="Txt2StHv" finishButtonTextRef="Txt4BwgZj" backButtonSupport="yes" docType="HTML5" template="/Modules/Shared/Client/PresentationTemplate/REST_Model_Solutions_Bootstrap4" firstPage="Page_1" id="GithubManual" dateCreated="2020-11-24T16:17:47.296Z">
+        <sharedFunctionScripts>
+            <sharedFunctionScript path="/Modules/Exercise_4c_Security_Alt/Scripts/Functions/SharedFunctions"/>
+        </sharedFunctionScripts>
+        <resources>
+            <resource name="GithubOAuth" path="/Modules/Exercise_4c_Security_Alt/Resources/GithubOAuthAlt"/>
+        </resources>
+        <saveRestore enabled="false" saveButtonTextRef="TxtA8P20H" restoreButtonTextRef="Txt1G2KGK" saveInfoTextRef="TxtArFmba" restoreInfoTextRef="Txt5jow1j"/>
+        <finalPage headerTextRef="Txt8UAMSd" infoTextRef="Txt5AYOl9" returnTextRef="Txt9T7YEo" inheritStyle="true"/>
+    </webForm>
+</ebase>

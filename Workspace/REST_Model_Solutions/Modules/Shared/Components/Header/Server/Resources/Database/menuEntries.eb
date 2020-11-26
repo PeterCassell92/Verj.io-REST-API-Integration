@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><ebase version="5.3.2">
+        
+    <dbResource database="rest_model_solutions" dateCreated="2018-02-28T16:38:30.157Z" id="menuEntries" table="true">
+                
+        <columns>owning_menu_id, menu_item_id, entry_menu_id</columns>
+                
+        <from>menu_entries</from>
+                
+        <additional>order by owning_menu_id, display_order</additional>
+                
+        <fields>
+                        
+            <field id="owning_menu_id" type="INTEGER"/>
+                        
+            <field id="menu_item_id" type="INTEGER"/>
+                        
+            <field id="entry_menu_id" type="INTEGER"/>
+                    
+        </fields>
+            
+    </dbResource>
+    
+</ebase>

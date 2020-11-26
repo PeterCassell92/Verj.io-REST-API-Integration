@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <webForm formHeaderTextRef="Txt6s32vS" htmlTitleTextRef="Txt98HTYR" finishButtonTextRef="Txt4UZzXr" backButtonSupport="yes" docType="HTML5" template="/Modules/Shared/Client/PresentationTemplate/REST_Model_Solutions_Bootstrap4" firstPage="Page_1" preferredScriptFolder="/Modules/Exercise_4a_Security/Scripts" id="Game" dateCreated="2020-11-20T20:32:54.599Z">
+        <resources>
+            <resource name="Cards" path="/Modules/Exercise_4a_Security/Resources/Cards"/>
+        </resources>
+        <saveRestore enabled="false" saveButtonTextRef="TxtARxCTC" restoreButtonTextRef="TxtHZFEQ" saveInfoTextRef="Txt7APXb2" restoreInfoTextRef="TxtF0lQM"/>
+        <finalPage headerTextRef="Txt1vnmdS" infoTextRef="Txt8WH86N" returnTextRef="Txt3gC0Em" inheritStyle="true"/>
+    </webForm>
+</ebase>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fields>
+    <field name="access_token" type="CHAR" labelTextRef="Txt77bkJD" displayType="TEXT" useFieldset="false"/>
+    <field name="authSuccess" type="BOOLEAN" labelTextRef="Txt7FN6dp" displayType="CHECKBOX" useFieldset="false"/>
+    <field name="authorization_code" type="CHAR" labelTextRef="Txt2XTv9m" displayType="TEXT" useFieldset="false"/>
+    <field name="githubOAuth" type="OBJECT" labelTextRef="Txt7mdW7m" displayType="TEXT" useFieldset="false"/>
+    <field name="newRepositoryName" type="CHAR" labelTextRef="Txt8om1gB" displayType="TEXT" useFieldset="false"/>
+    <field name="refresh_token" type="CHAR" labelTextRef="Txt76p2F4" displayType="TEXT" useFieldset="false"/>
+    <field name="responseBody" type="CHAR" labelTextRef="Txt75f5Or" displayType="TEXT" useFieldset="false"/>
+    <field name="responseStatus" type="CHAR" labelTextRef="Txt9mfLq5" displayType="TEXT" useFieldset="false"/>
+</fields>

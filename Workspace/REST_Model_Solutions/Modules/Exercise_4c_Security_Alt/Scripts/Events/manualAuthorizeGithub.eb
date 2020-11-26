@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <script contentType="Javascript" preferredComponentPath="/Modules/Exercise_4c_Security_Alt/GithubManual" id="manualAuthorizeGithub" dateCreated="2020-11-25T15:27:44.689Z">
+        <scriptText>importPackage(com.ebasetech.xi.api);
+importPackage(com.ebasetech.xi.services);
+
+try{
+	// Call Authorize Endpoint
+	var client_id = getProperty('clientID');
+	var client_secret = getProperty('clientSecret');
+	var redirect_uri = getProperty('redirectURI');
+	var scope = getProperty('scope');
+	var state = form.returnUrl;
+	
+	var url = &quot;https://github.com/login/oauth/authorize?client_id=&quot;+client_id+&quot;&amp;response_type=code&amp;redirect_uri=&quot; + redirect_uri + &quot;&amp;scope=&quot;+scope+&quot;&amp;state=&quot;+state;
+
+	log(&quot;Calling Github Authorize&quot;);
+	log(&quot;Redirect URI = &quot; + redirect_uri);
+	
+	form.callUrl(url, null, &quot;get&quot;);
+	//Cannot be achieved using REST Resource because callback is required (enhancement request needed for REST Resources)
+
+		//we do not return to the same session. IT MAY BE POSSIBLE TO STORE THE SESSION ID IN A COOKIE FOR THE RETURN but tbh nothing in session by this point is needed to be stored.
+	if(client.request.getParameter(&quot;code&quot;)){
+		//get bearer code from client parameters
+		fields.authorization_code.value = client.request.getParameter(&quot;code&quot;);
+		
+		var uri = &quot;https://github.com/login/oauth/access_token&quot;;
+		headers = {&quot;Content-Type&quot;: &quot;application/json&quot;, &quot;Accept&quot;:&quot;application/json&quot;}; //&quot;application/x-www-form-urlencoded&quot;};
+		parameters = {&quot;client_id&quot;: client_id, &quot;client_secret&quot;: client_secret, &quot;code&quot;: fields.authorization_code.value, &quot;redirect_uri&quot;: redirect_uri};
+		var resp = services.rest.get(uri, headers, parameters);
+		
+	
+		if(resp.success){
+			var obj = JSON.parse(resp.body);
+			log(JSON.stringify(obj, null, 3));
+	
+			fields.access_token.value = obj.access_token;
+			fields.refresh_token.value = obj.refresh_token;
+			
+			fields.authSuccess.value = true;
+		}
+		else{
+			throw new Error(&quot;Authorization Error&quot;);
+		}
+	}
+
+}
+catch(e){
+	event.owner.addWarningMessage(e.message);
+}</scriptText>
+    </script>
+</ebase>

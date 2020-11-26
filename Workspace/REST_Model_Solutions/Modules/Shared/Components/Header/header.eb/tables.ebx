@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tables>
+    <table name="menuEntries" id="f0c68f2b-bd66-43b0-a1ea-90bdcb10b6f7">
+        <column name="entry_menu_id" type="INTEGER" labelTextRef="Txt7ZyvDo" displayType="TEXT" id="afeac0d7-eee8-4b8a-a600-6b07a73d6ad1">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+        <column name="menu_item_id" type="INTEGER" labelTextRef="Txt4FGjMZ" displayType="TEXT" id="b5aae7f5-9eda-4bac-b3ac-bc2c7f55d0a4">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+        <column name="owning_menu_id" type="INTEGER" labelTextRef="Txt3JWsRY" displayType="TEXT" id="48967c7b-c23b-4188-afde-dba7ec370af6">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+    </table>
+    <table name="menuItems" id="e9babd5f-687e-477b-b2a5-3baa301657d0">
+        <column name="format_class" type="CHAR" labelTextRef="Txt48SFEY" displayType="TEXT" id="e062b33f-44d2-48d8-9ca5-dc4e82fea3b4"/>
+        <column name="menu_item_action" type="CHAR" labelTextRef="Txt8I0HBf" displayType="TEXT" id="a7f9db70-63a5-4e16-a581-ddcc9d30d34b"/>
+        <column name="menu_item_id" type="INTEGER" labelTextRef="Txt3nsiwu" displayType="TEXT" id="f8dc0b96-a4c0-4b81-b846-a3ef59536ec1">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+        <column name="menu_item_text" type="CHAR" labelTextRef="TxtAGcZQV" displayType="TEXT" id="51a0f7d5-ab7c-4367-b53d-1c24e682da1c"/>
+    </table>
+    <table name="menus" id="3689bb7f-cdb0-4db8-a3d4-533b1b47a65a">
+        <column name="format_class" type="CHAR" labelTextRef="Txt33ZWPz" displayType="TEXT" id="3b3570f5-9668-49ca-b8d0-104af45585fd"/>
+        <column name="menu_description" type="CHAR" labelTextRef="Txt60rXHg" displayType="TEXT" id="240e9d2d-0d48-414c-b1df-437d653d2768"/>
+        <column name="menu_id" type="INTEGER" labelTextRef="Txt3Pqc87" displayType="TEXT" id="c0e54bd6-70ed-4c8c-9e92-ea8902c6d7d1">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+    </table>
+    <table name="visibleMenuItems" id="caea863b-6eb6-44b1-90e6-cef195c67dab">
+        <column name="menu_item_id" type="INTEGER" labelTextRef="Txt9EOzXE" displayType="TEXT" id="e195c0e3-9079-4f60-9968-842feb0140e8">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+        <column name="userId" type="INTEGER" labelTextRef="Txt5FepVW" displayType="TEXT" id="ce828820-68e7-4319-9c1d-96445080db4c">
+            <validators>
+                <validator type="DEC_DIG"/>
+            </validators>
+        </column>
+    </table>
+</tables>

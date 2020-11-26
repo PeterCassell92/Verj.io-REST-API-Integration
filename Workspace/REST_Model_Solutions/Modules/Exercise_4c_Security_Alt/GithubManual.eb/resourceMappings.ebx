@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resourceMappings>
+    <resourceMapping id="GithubOAuth">
+        <fieldMapping resourceField="accessToken" field="access_token"/>
+        <fieldMapping resourceField="name" field="newRepositoryName"/>
+        <fieldMapping resourceField="responseBody" field="responseBody"/>
+        <fieldMapping resourceField="responseStatusCode" field="responseStatus"/>
+    </resourceMapping>
+</resourceMappings>

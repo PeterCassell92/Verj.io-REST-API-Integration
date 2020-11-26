@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><ebase version="5.3.2">
+        
+    <dbResource database="rest_model_solutions" dateCreated="2018-03-20T15:48:32.310Z" description="User email table track user confirmations" id="userEmail">
+                
+        <columns>*</columns>
+                
+        <from>user_emails</from>
+                
+        <where>email_uid=&amp;&amp;email_uid</where>
+                
+        <fields>
+                        
+            <field id="actioned" length="1" type="INTEGER"/>
+                        
+            <field id="email_uid" key="true" length="255" required="true" type="VARCHAR"/>
+                        
+            <field id="expiry" type="TIMESTAMP"/>
+                        
+            <field id="user_id" length="10" type="INTEGER"/>
+                        
+            <field id="type" type="VARCHAR"/>
+                    
+        </fields>
+            
+    </dbResource>
+    
+</ebase>

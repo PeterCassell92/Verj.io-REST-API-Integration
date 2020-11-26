@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ebase version="5.4.0">
+            
+    
+    <script contentType="Javascript" dateCreated="2018-02-06T21:52:19.907Z" id="headerFunctions" preferredComponentPath="/Modules/Shared/Components/Header/header">
+                        
+        
+        <scriptText>importPackage(com.ebasetech.xi.api);
+importPackage(com.ebasetech.xi.services);
+
+
+// define database to use
+var dbConnection = "rest_model_solutions";
+	
+/**
+ * getMenu
+ * @param userId The user id
+ * @param menuId The ID of the top level menu to start from
+ * @return menu The formatted menu 
+ **/
+// Returns a formatted menu for a (optionally) nested menu. Only menu items visible to the user are included - the visible options table
+// connects menu items to user roles and is used to decide whether or not a particular menu item is visible for a passed in userID.
+// The process walks down each menu that it comes across in the nested menu structure and builds a formatted representation of the menu 
+// as it goes. The actual formatting required is implemented in the formatMenuOpen, formatMenuItem and formatMenuClose functions.
+//
+function getMenu(userId,menuId) {
+	// number of spaces to indent for a pretty log output (testing only)
+	var s = 0;
+	// the level of menu that we're currently processing: 0 means top level, 1 means first sub-menu level and so on. This can be useful for formatting
+	// menus differently depending on the particular level you're at. For example, you might choose that the top level menu (level 0) is closed when first
+	// presented to the screen. We start it off as -1 because it will be incremented to zero as soon as we drill into our first menu
+	var menuLevel = -1;
+	// an array to hold the menu id's as we go down the tree, we add this data to each menu item for later use
+	var parentMenuIDs = [];
+	// construct a menu object for these entries
+	var m = menuObject();
+	// get the menu structure by menu ID
+	return m.getMenuStructureByMenuID(menuId);
+
+	// construct a menu object
+	function menuObject() {
+		// construct object
+		var menu = function() {
+			// create arrays of menu, menu items and menu entries
+			var menus = getMenus();
+			var menuItems = getMenuItems();
+			var menuEntries = getMenuEntries();
+			var visibleMenuItems = getVisibleMenuItems();
+			// formatted menu string to be returned
+			var formattedMenu = ''
+			// flag to indicate whether we found a visible item somewhere in the menu's full structure. Has to be set at this level so that it is visible
+			// as we drill down recursively calling the same function 
+			var foundVisibleItem = false;
+			
+			/* get methods for testing */
+			this.getMenuEntries = function() {
+				return menuEntries;
+			}
+			this.getMenus = function() {
+				return menus;
+			}
+			this.getMenuEntries = function() {
+				return menuEntries;
+			}
+			// START POINT to return the menu structure for a particular menu ID
+			this.getMenuStructureByMenuID = function(menuId) {
+				  // only bother to drill down into menus if they have a visible menu item somewhere in their nested structure
+				drillDownMenu(menuId);
+				// return a formatted menu string
+				return formattedMenu;
+			}
+			// starts to drill into a particular menu, only continues though if the menu has visible items for the user - otherwise there's no point carrying on. In fact, carrying on
+			// would create empty menus in the resulting formatted output
+			function drillDownMenu(menuId) {
+				if (menuHasVisibleMenuItems(menuId)) {
+					// reset the foundVisibleItem flag
+					foundVisibleItem = false;
+					// increment the menu level value
+					menuLevel++;
+					// build parent menu array - add latest menu ID
+					parentMenuIDs.push(menuId);
+					// new menu, so format the opening
+					formatMenuOpen(getMenuDescription(menuId),getMenuFormatClass(menuId));
+					// start to drill down
+					getChildrenOfMenu(menuId);
+					// now format the menu close
+					formatMenuClose();
+					// build parent menu array - remove latest menu ID
+					parentMenuIDs.pop();
+					// decrease the menu level value
+					menuLevel--;
+				}
+			}
+			// recursive function to derive menu structure
+			function getChildrenOfMenu(menuId) {
+				menuEntries.forEach(function(a) {
+					if (a[0] == menuId) {
+						if (a[1] != null) {
+							// if this item is visible, format it
+							if (isVisible(a[1])) {
+								formatMenuItem(getMenuItemText(a[1]),getMenuItemAction(a[1]),getMenuItemFormatClass(a[1]));
+							}
+						} else {
+							// new menu, so drill into it
+							drillDownMenu(a[2]);
+						}
+					}
+				});
+			}
+			// checks if a menu has visible (to this user) menu items somewhere in its structure: function calls itself recursively and returns true if it finds something visible
+			function menuHasVisibleMenuItems(menuId) {
+				  // start working through the menu items
+				menuEntries.forEach(function(a) {
+					if (a[0] == menuId) {
+						if (a[1] != null) {
+							// if this item is visible set our flag to be true
+							if (isVisible(a[1])) {
+								foundVisibleItem = true;
+								return;
+							}
+						} else {
+							// new menu, so drill down to the next menu level
+							menuHasVisibleMenuItems(a[2]);
+						}
+					}
+				});
+				// return the value of our flag
+				return foundVisibleItem;
+			}		  
+			// check if a menu item is visible, i.e. is it in the visibleMenuItems array
+			function isVisible(menuItemId) {
+				for (var i = 0; i &lt; visibleMenuItems.length; i++) {
+					if (visibleMenuItems[i] == menuItemId) return true
+				}
+				return false;
+			}
+			
+			/* FORMATTING IMPLEMENTATION STARTS HERE 
+				NB: you need to add your own formatting (&lt;ul&gt;&lt;li&gt; etc) to the formatMenuItem, formatMenuOpen, formatMenuClose methods below 
+					 note also that menuLevel is available to you if you want to format things differently at different menu levels */
+			
+			// format a menu line item
+			function formatMenuItem(itemText,itemAction,formatClass) {
+				// log the output
+//				log(Array(s+1).join(" ") + 'ITEM: text - ' + itemText + ' action - ' + itemAction + ' class - ' + formatClass);
+
+				// uncomment the next two lines for testing
+				// formattedMenu += 'ITEM: text - ' + itemText + ' action - ' + itemAction + ' || ';
+
+				// format menu items: treat top level menu items as nav items to display in the header, anything associated with a sub-menu is a drop down item
+				if (menuLevel == 0) {
+					formattedMenu += '&lt;li class="nav-item"&gt;&lt;a data-parentMenuIDs="'+parentMenuIDs+'" onclick="return setMenuItemParentMenuIDs(this)" class="nav-link" href="' + itemAction + '"&gt;';				
+					if (formatClass) formattedMenu += '&lt;i class="' + formatClass + '"&gt;&lt;/i&gt; ';
+					formattedMenu += itemText + '&lt;/a&gt;&lt;/li&gt;';			  	
+				}
+				else {
+					// These are hyperlinks. We need to record their parent menu IDs so that we can correctly build a breadcrumb trail. So, we create a data attribute called 
+					// parentMenuIDs that holds this. When the link is clicked we write this parent menu information away to session state and then run the url to load the
+					// linked form. When the component runs in the linked form it builds the breadcrumb trail from the parent menu data save to ssession state.
+					formattedMenu += '&lt;li&gt;&lt;a data-parentMenuIDs="'+parentMenuIDs+'" onclick="return setMenuItemParentMenuIDs(this)" class="dropdown-item" href="' + itemAction + '"&gt;';	 
+					if (formatClass) formattedMenu += '&lt;i class="mr-1 ' + formatClass + '"&gt;&lt;/i&gt; ';
+					formattedMenu += itemText + '&lt;/a&gt;&lt;/li&gt;';
+				}
+			}
+			// format menu open
+			function formatMenuOpen(menuText, formatClass) {
+				// log the output
+//				log(Array(s+1).join(" ") + 'MENU OPEN - ' + menuText + ' format class - ' + formatClass);
+				
+				// uncomment the next line for testing
+				// formattedMenu += 'MENU OPEN - ' + menuText + ' || ';
+
+				// format so that all menus at level 1 show as drop downs in the header navbar. NB. we ignore the very top level (level 0)
+				if (menuLevel == 1) {
+               formattedMenu += '&lt;li class="nav-item dropdown"&gt;&lt;a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"&gt;'; 
+					if (formatClass) formattedMenu += '&lt;i class="' + formatClass + '"&gt;&lt;/i&gt; ';
+					formattedMenu += menuText + ' &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;&lt;ul class="dropdown-menu"&gt;';
+				}
+				// and all menus level and above are treated as expanding sub menus
+				if (menuLevel &gt; 1) {
+					formattedMenu += '&lt;li class="dropdown-submenu"&gt;&lt;a class="dropdown-item dropdown-toggle" href="#"&gt;'; 
+					if (formatClass) formattedMenu += '&lt;i class="' + formatClass + '"&gt;&lt;/i&gt; ';
+					formattedMenu += menuText + ' &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;&lt;ul class="dropdown-menu"&gt;';
+				}
+
+				// increase log print indent spacing by 3
+				s += 3;
+			}
+			// format menu close
+			function formatMenuClose() {
+				// decrease log print indent spacing by 3
+				s -= 3;
+
+				// close menus
+				formattedMenu += '&lt;/ul&gt;&lt;/li&gt;';					
+				
+				// uncomment the next line for testing
+				// formattedMenu += 'MENU CLOSE' + ' || ';
+
+				// log the output
+//				log(Array(s+1).join(" ") + 'MENU CLOSE');
+			}
+			
+			/* END OF FORMATTING IMPLEMENTATION */
+			
+			// get a menu format class for a menu ID
+			function getMenuFormatClass(menuId) {
+				for (var i = 0; i &lt; menus.length; i++) {
+					if (menus[i][0] == menuId) return menus[i][2];
+				}
+			}			
+			// get a menu item format class for a menu item ID
+			function getMenuItemFormatClass(menuItemId) {
+				for (var i = 0; i &lt; menuItems.length; i++) {
+					if (menuItems[i][0] == menuItemId) return menuItems[i][3];
+				}
+			}						
+			// get a menu ID for a menu ID
+			function getMenuIDforMenuDescription(menuDescription) {
+				for (var i = 0; i &lt; menus.length; i++) {
+					if (menus[i][1] == menuDescription) return menus[i][0];
+				}
+			}
+			// get a menu description for a menu ID
+			function getMenuDescription(menuId) {
+				for (var i = 0; i &lt; menus.length; i++) {
+					if (menus[i][0] == menuId) return menus[i][1];
+				}
+			}
+			// get a menu item action for a menu item ID
+			function getMenuItemAction(menuItemId) {
+				for (var i = 0; i &lt; menuItems.length; i++) {
+					if (menuItems[i][0] == menuItemId) return menuItems[i][2];
+				}
+			}
+			// get a menu item text for a menu item ID
+			function getMenuItemText(menuItemId) {
+				for (var i = 0; i &lt; menuItems.length; i++) {
+					if (menuItems[i][0] == menuItemId) return menuItems[i][1];
+				}
+			}
+			// get menus
+			function getMenus() {
+				var m = [];
+				var tbl = tables.menus;
+				var rows = tbl.fetchTable(true);
+				
+				while(rows.next()){
+					m.push([tbl.menu_id.value, tbl.menu_description.value, tbl.format_class.value])
+				}
+				return m;
+			}
+			// get menu items
+			function getMenuItems() {
+				var m = [];
+				var tbl = tables.menuItems;
+				var rows = tbl.fetchTable(true);
+				
+				while(rows.next()){
+					m.push([tbl.menu_item_id.value, tbl.menu_item_text.value, tbl.menu_item_action.value, tbl.format_class.value])
+				}
+				return m;
+			}
+			// get menu entries
+			function getMenuEntries() {
+				var m = [];
+				var tbl = tables.menuEntries;
+				var rows = tbl.fetchTable(true);
+				
+				while(rows.next()){
+					m.push([tbl.owning_menu_id.value, tbl.menu_item_id.value, tbl.entry_menu_id.value])
+				};
+				return m;
+			}
+			// get the complete set of visible menu items for this user. Include visible menu items with no role associated - this means they are visible to everyone
+			function getVisibleMenuItems() {
+				var m = [];
+				var tbl = tables.visibleMenuItems;
+				tbl.userId.value = userId;
+				var rows = tbl.fetchTable(true);
+				
+				while(rows.next()){
+					m.push([tbl.menu_item_id.value])
+				};
+				return m;
+			}
+		}
+		// return the menu object
+		return new menu();
+	}
+}
+
+/**
+ * getBreadcrumb
+ * @param formId The name of the form corresponding to an action (hyperlink) associated with a menu item
+ * @return menu The formatted breadcrumb
+ **/
+// returns a formatted breadcrumb trail for a passed in formID (name), i.e. where that form is the action associated with a particular menu item
+function getBreadcrumb(formId) {
+	
+	// array to hold breadcrumb entries
+	var bcArray = [];
+	
+	// check whether the formId passed is defined within the menu
+	var menuItemDesc = getMenuItemDescriptionForFormID(formId);
+
+	// if the formId is in a menu (i.e. not undefined) then build the breadcrumb as normal
+	if (typeof menuItemDesc != 'undefined') {
+		// add the menuItemDesc for the passed in formID as the first breadcrumb entry
+		bcArray.push(menuItemDesc);
+
+		// get saved parent structure for this form from session state
+		if (client.httpSession.getAttribute('headerState')) {
+			parentMenus = client.httpSession.getAttribute('headerState').getParentMenuIDs().split(',').reverse()
+				// loop through the parent menus, add them to our breadcrumb array
+				for (var i = 0; i &lt; parentMenus.length; i++) {
+					bcArray.push(getMenuDescription(parentMenus[i]));
+				}
+		}
+
+		// reverse the array so that the top level menu is first in the list
+		bcArray.reverse();
+
+		// now build a formatted breadcrumb trail from our breadcrumb array and return it
+		return formatBreadcrumbTrail();
+	} else {
+		// the passed in formID is not part of the menu structure so check if a formDescription has been set or format the formID to display nicely in the breadcrumb
+		if (form.fields.formDescription &amp;&amp; form.fields.formDescription.value) {
+			// the formDescription has been set so use this
+			var formDesc = form.fields.formDescription.value;
+			//wrap the formDesc with the basic breadcrumb html structure before returning it
+			formDesc = '&lt;ul class="breadcrumb"&gt;&lt;li class="breadcrumb-item"&gt;' + formDesc + '&lt;/li&gt;&lt;/ul&gt;';
+			return formDesc;
+		} else {
+			// no form description set so format the formId parameter
+			// the below regex converts a camel case formId to individual words with spaces
+			var regex = /([^A-Za-z0-9\.\$])|([A-Z])(?=[A-Z][a-z])|([^\-\$\.0-9])(?=\$?[0-9]+(?:\.[0-9]+)?)|([0-9])(?=[^\.0-9])|([a-z])(?=[A-Z])/g;
+
+			// take the formId passed into the function and copy to the formStr variable for formatting
+			var formStr = formId;
+
+			// now strip the .eb off the end
+			formStr = formStr.substring(0, formStr.length - 3);
+
+			// run the regex to convert to individual words
+			formStr = formStr.replace(regex, '$2$3$4$5 ');
+
+			// finally wrap the formatted formId with the basic breadcrumb html structure before returning it
+			formStr = '&lt;ul class="breadcrumb"&gt;&lt;li class="breadcrumb-item"&gt;' + formStr + '&lt;/li&gt;&lt;/ul&gt;';
+			return formStr;
+		}
+	}
+
+	/* Breadcrumb styling starts here */
+	function formatBreadcrumbTrail() {
+		var bc = '&lt;ul class="breadcrumb rounded-0"&gt;';
+		if (bcArray.length==1) {
+			// only one entry, so must be the first form to run (no menu click, so no parent structure known) so always show this in the breadcrumb
+			bc += '&lt;li class="breadcrumb-item"&gt;' + bcArray[0] + '&lt;/li&gt;';
+		}
+		else {
+			// more than one entry in the array, so must be a menu click driven structure
+			for (var i=0; i&lt;bcArray.length; i++) {
+				// for our implementation we will skip the very top level
+				if (i&gt;0) bc += '&lt;li class="breadcrumb-item"&gt;' + bcArray[i] + '&lt;/li&gt;';
+			}
+		}
+		bc += '&lt;/ul&gt;';
+		return bc;
+	}
+
+	// get menu description for a particular menu ID
+	function getMenuDescription(menuID) {
+		var m;
+		var tbl = tables.menus;
+		var row = tbl.findRow(tbl.menu_id, menuID);
+		
+		if(row &gt; -1){
+			tbl.setCurrentRow(row);
+				m = tbl.menu_description.value;
+		}
+		return m;
+	}
+	
+	// return the description of the menu item associated with the passed in formID
+	function getMenuItemDescriptionForFormID(formId) {
+		var m;
+		var tbl = tables.menuItems;
+		var row = tbl.findRow(tbl.menu_item_action, formId);
+		
+		if(row &gt; -1){
+			tbl.setCurrentRow(row);
+			m = tbl.menu_item_text.value;
+		}
+		return m;
+	}
+}
+
+/**
+ * checkSecurity
+ **/
+// checks whether the form that is loading is visible in the menu system to this user (or omitted from the menu entirely)
+//  if it isn't, chuck the user out to the home page
+function checkSecurity(){
+	/// if the user Id is not a number, logoff to prevent errors
+	if(isNaN(system.securityManager.userName)) system.securityManager.logoff();
+	
+	var permitted = false;
+	
+	// get a list of role ids which can load the current form
+	var sql = 'select role_id as "role_id" '
+					+ 'from menu_items mi, visible_menu_items vmi '
+					+ 'where mi.menu_item_id = vmi.menu_item_id '
+					+ "and LOWER(menu_item_action) like '" + form.elementName.toLowerCase() + ".eb%'"
+
+	var results = services.database.executeSelectStatement(dbConnection, sql, function(c){
+		log(JSON.stringify(c));
+		if(isNaN(c.role_id) || system.securityManager.hasRole(c.role_id)){
+			permitted = true;
+			return false;
+		}
+	})
+
+	if(!results) permitted = true;
+
+	// if the user isn't permitted to load this form, goto the home form
+	if(!permitted) form.gotoForm("REST_Model_Solutions_Home");
+}
+
+/**
+ * startUserConfirmation
+ * @param type The type of confirmation action being undertaken (eg. password reset, email confirmation)
+ * @return url The url to include in an email.
+ **/
+// Generates a UUID and builds a url intended to be included in an email so that the user can click it and confirm whatever action is taking place.
+//  Also inserts a record in the database with a type to be used by the confirmation form
+function startUserConfirmation(type){
+	// generate a unique id to use as a key to confirm an email address
+	var UID = java.util.UUID.randomUUID().toString();
+
+	// if we don't have the user ID but we do have an email address, get the userID
+	if(!fields.user_id.value &amp;&amp; fields.email.value) resources.userByUsername.fetch();
+
+
+	// if at this point we still have no user ID, return false to indicate failure
+	if(!fields.user_id.value) return false;
+	
+
+	// insert the user email record with unique id to be checked later
+	fields.emailUID.value = UID;
+	
+	// set the type
+	fields.confirmationType.value = type;
+	
+	// set the expiry date
+	var dt = new Date();
+	fields.emailExpiry.value = dt.setDate(dt.getDate()+1);
+
+	// insert the record
+	resources.userEmail.insert();
+
+	// get the url of this server
+	var url = "http://" + client.request.serverName;
+	// if this is localhost, include the port
+	if(url == "http://localhost") url += ":" + client.request.serverPort;
+	// add the webapp
+	url += client.request.contextPath;
+
+	// add the form and the UID to the url
+	url += "/REST_Model_Solutions_Confirmation.eb?UID=" + UID
+
+	return url;
+}
+
+/**
+ * sendActivationEmail
+ **/
+// send an account confirmation email to the user and insert an user email confirmation record
+function sendConfirmationEmail(){
+	// start a user confirmation via email (gets the user's details, populates the firstName field)
+	var url = startUserConfirmation("accountConfirmation");
+
+	// if the confirmation has been started, carry on
+	if(url){
+		// Build the message text html
+		var msgText = "&lt;p&gt;Hi " + fields.firstName.value + ",&lt;/p&gt;"
+								+ "&lt;p&gt;Thank you for registering.&lt;/p&gt;"
+								+ "&lt;p&gt;Please click the below link to confirm your account.&lt;/p&gt;"
+								+ "&lt;a href='" + url + "' target='_blank' title='Account Confirmation' style='color: blue; text-decoration: none;'&gt;Click here to confirm your account&lt;/a&gt;&lt;/p&gt;"
+								+ "&lt;p&gt;This link will expire after 24 hours.&lt;/p&gt;"
+								+ "&lt;p&gt;Kind Regards,&lt;br&gt;Admin&lt;/p&gt;";
+		
+		// set the text and subject resource fields
+		fields.msgSubject.value = "Account Activation";
+		fields.msgText.value = msgText;
+		
+		// Now send the email
+		try {
+			resources.genericEmail.sendmail();
+			return true;
+		}
+		catch(e) {
+			log("Activation email send error: "+e);
+		}
+	}
+}
+
+/**
+ * sendPasswordResetEmail
+ **/
+// send an activation email to the user and insert an user email confirmation record
+function sendPasswordResetEmail(){
+	// start a user confirmation via email (gets the user's details, populates the firstName field)
+	var url = startUserConfirmation("passwordReset");
+	
+	// if the confirmation has been started, carry on
+	if(url){
+		// Build the message text html
+		var msgText = "&lt;p&gt;Hi " + fields.firstName.value + ",&lt;/p&gt;"
+								+ "&lt;p&gt;A password reset was requested for your account&lt;/p&gt;"
+								+ "&lt;p&gt;If you requested this reset, please click the below link to set your new password.&lt;/p&gt;"
+								+ "&lt;a href='" + url + "' target='_blank' title='Password Reset' style='color: blue; text-decoration: none;'&gt;Click here to reset your password&lt;/a&gt;&lt;/p&gt;"
+								+ "&lt;p&gt;This link will expire after 24 hours.&lt;br&gt;&lt;/p&gt;"
+								+ "&lt;p&gt;If you didn't request this password reset, you can ignore this email&lt;/p&gt;"
+								+ "&lt;p&gt;Kind Regards,&lt;br&gt;Admin&lt;/p&gt;";
+		log(msgText);
+		// set the text and subject resource fields
+		fields.msgSubject.value = "Password Reset";
+		fields.msgText.value = msgText;
+		
+		// Now send the email
+		try {
+			resources.genericEmail.sendmail();
+			return true;
+		}
+		catch(e) {
+			log("Password Reset email send error: "+e);
+		}
+	}
+}
+
+</scriptText>
+                    
+    
+    </script>
+        
+
+</ebase>

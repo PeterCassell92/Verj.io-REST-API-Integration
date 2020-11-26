@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.4.0">
+    <webFormComponent type="PART_PAGE" template="/Modules/Shared/Client/PresentationTemplate/REST_Model_Solutions_Bootstrap4" firstPage="DUMMY_PAGE_03102003" id="footer" dateCreated="2018-01-20T13:50:24.893Z"/>
+</ebase>

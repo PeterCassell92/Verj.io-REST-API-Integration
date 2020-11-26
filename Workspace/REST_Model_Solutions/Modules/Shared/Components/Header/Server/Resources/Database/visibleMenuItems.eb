@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><ebase version="5.4.0">
+        
+    <dbResource database="rest_model_solutions" dateCreated="2018-02-28T16:42:05.009Z" id="visibleMenuItems" nativeSql="true" table="true">
+                
+        <select>select menu_item_id from visible_menu_items vmi, user_roles ur
+where ur.user_id = &amp;&amp;userId
+and vmi.role_id = ur.role_id 
+union
+select menu_item_id from visible_menu_items where role_id is null</select>
+                
+        <fields>
+                        
+            <field id="menu_item_id" type="INTEGER"/>
+                        
+            <field id="userId" persistent="false" type="INTEGER"/>
+                    
+        </fields>
+            
+    </dbResource>
+    
+</ebase>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <restResource id="Cards" dateCreated="2020-11-20T20:33:02.677Z">
+        <baseURI>https://verjtraining.verj.cloud/apps/api/CardDeck</baseURI>
+        <endpoints>
+            <endpoint name="" description="" path="" method="GET" requestField="" responseField="" debug="false" responseCode="&amp;&amp;responseStatusCode">
+                <endpointSecurity httpBasicAuthenticationEnabled="true" httpBasicAuthenticationUsername="verjTraining" httpBasicAuthenticationPassword="ed64805873c4d6f24257345ba23403d2" httpAuthenticationType="Basic Authentication" oAuthConfigName="" oAuthScope="" oAuthUsername=""/>
+            </endpoint>
+            <endpoint name="CreateDeck" description="" path="/v1/deck/create" method="POST" requestField="&amp;&amp;requestBody" responseField="&amp;&amp;responseBody" debug="true" responseCode="&amp;&amp;responseStatusCode">
+                <endpointSecurity httpBasicAuthenticationEnabled="true" httpBasicAuthenticationUsername="verjTraining" httpBasicAuthenticationPassword="ed64805873c4d6f24257345ba23403d2" httpAuthenticationType="Basic Authentication" oAuthConfigName="" oAuthScope="" oAuthUsername=""/>
+            </endpoint>
+            <endpoint name="Draw" description="" path="/v1/deck/&amp;&amp;deck_id/draw" method="GET" requestField="" responseField="&amp;&amp;responseBody" debug="false" responseCode="&amp;&amp;responseStatusCode">
+                <parameters>
+                    <parameter name="From-Position" value="&amp;&amp;fromPosition" queryParam="true"/>
+                    <parameter name="To-Position" value="&amp;&amp;toPosition" queryParam="true"/>
+                    <parameter name="Draw-To" value="&amp;&amp;drawTo" queryParam="true"/>
+                    <parameter name="Draw-From" value="&amp;&amp;drawFrom" queryParam="true"/>
+                </parameters>
+                <endpointSecurity httpBasicAuthenticationEnabled="true" httpBasicAuthenticationUsername="verjTraining" httpBasicAuthenticationPassword="ed64805873c4d6f24257345ba23403d2" httpAuthenticationType="Basic Authentication" oAuthConfigName="" oAuthScope="" oAuthUsername=""/>
+            </endpoint>
+        </endpoints>
+        <fields>
+            <field id="deck_id" required="true"/>
+            <field id="drawFrom"/>
+            <field id="drawTo"/>
+            <field id="fromPosition"/>
+            <field id="requestBody"/>
+            <field id="responseBody"/>
+            <field id="responseStatusCode"/>
+            <field id="toPosition"/>
+        </fields>
+    </restResource>
+</ebase>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <webForm formHeaderTextRef="Txt25uhff" htmlTitleTextRef="TxtprMVv" finishButtonTextRef="Txt21GA0D" backButtonSupport="yes" docType="HTML5" template="/Modules/Shared/Client/PresentationTemplate/REST_Model_Solutions_Bootstrap4" firstPage="Page_1" id="Weather" dateCreated="2020-11-20T19:52:21.292Z">
+        <resources>
+            <resource name="MetaWeather" path="/Modules/Exercise_3_Consuming/Resources/MetaWeather"/>
+        </resources>
+        <saveRestore enabled="false" saveButtonTextRef="Txt41rlhE" restoreButtonTextRef="Txt66p9KH" saveInfoTextRef="Txt2THHJn" restoreInfoTextRef="Txt1QKcn5"/>
+        <finalPage headerTextRef="Txt9xpDTh" infoTextRef="Txt2HJQm2" returnTextRef="Txt1NfXGv" inheritStyle="true"/>
+    </webForm>
+</ebase>

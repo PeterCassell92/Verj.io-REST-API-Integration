@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page name="Page_1" pageHeaderTextRef="Txt2MbHK7" pageInfoTextReference="Txt47YXda" pageTrailerTextReference="Txt9CWe6D" nextPageTextReference="Txt87Ik74" prevPageTextReference="TxtKcNi1">
+    <pageContents>
+        <page ariaLabelText="LocalTxt2rfloj" ctrl="Pago6Lj3" outputType="0" pdfFooterText="LocalTxt6AORc5" pdfHeaderText="LocalTxt5W4cAQ" uid="I8r75nHX">
+            <bootstrapcontainer ariaLabelText="LocalTxt7ZMur8" ctrl="BsContainerHOTmo" uid="IyvPpgB8">
+                <bootstraprow ariaLabelText="LocalTxt8g9d7B" ctrl="BsRowXJ4Au" uid="Lxh37yvf">
+                    <bootstrapcolumn ariaLabelText="LocalTxt6Iug65" ctrl="BsColumnUJcBd" uid="PbmUpFVy">
+                        <panel ariaLabelText="LocalTxt1085T4" ctrl="PangtMzp" uid="L02yrcOs">
+                            <button ariaLabelText="LocalTxttrhsC" buttonText="LocalTxt5A0Sz1" ctrl="ButPdj2F" mouseOverText="LocalTxt5x84Bv" onClickEvent="/Modules/Exercise_4a_Security/Scripts/Events/createDeck" uid="GGKr7hWk"/>
+                        </panel>
+                    </bootstrapcolumn>
+                    <bootstrapcolumn ariaLabelText="LocalTxt2Uum0S" ctrl="BsColumn9vyjk" uid="4TNJFVR9">
+                        <field ariaLabelText="LocalTxt1MDXQD" buttonText="LocalTxt3jUCqR" ctrl="FldFo3wr" displayInfoText="false" displayLabelText="true" field="deckId" fieldClass="@0" placeHolderText="LocalTxt9CupCC" requiredText="LocalTxt9cEMh2" uid="CaObXvW7" validationText="LocalTxt7RKUGD"/>
+                        <panel ariaLabelText="LocalTxt2ekFLY" ctrl="Pannfvff" uid="P7dy2ht8">
+                            <text ctrl="TexKrWb1" text="LocalTxtA8Su7n" uid="KXZh3Q5m"/>
+                            <hyperlink ariaLabelText="LocalTxt9J7uHr" cssClass="mx-2" ctrl="optParamsToggle" onClickEvent="/Modules/Exercise_4a_Security/Scripts/Events/toggleShowOptParams" text="LocalTxt77xz0H" title="LocalTxt7zXZAZ" uid="16EDkYY"/>
+                        </panel>
+                        <bootstraprow ariaLabelText="LocalTxt7XHAkf" ctrl="optParams" hidden="true" uid="S8dTD1qk">
+                            <bootstrapcolumn ariaLabelText="LocalTxt1tr69i" ctrl="BsColumngj2cj" layoutType="BOOTSTRAP_FIELD" uid="Pqlad6gK">
+<field ariaLabelText="LocalTxt9VbulY" buttonText="LocalTxt6g9EUp" ctrl="FldMGZ1q" field="drawFrom" placeHolderText="LocalTxt4EF5uq" requiredText="LocalTxtwSaJE" uid="4V0cleBP" validationText="LocalTxt7PfhoT"/>
+<field ariaLabelText="LocalTxtDUnhK" buttonText="LocalTxt6CR9NA" ctrl="FldfrzVd" field="fromPosition" placeHolderText="LocalTxt2VvQIv" requiredText="LocalTxt9YXBja" uid="BpoTyCCY" validationText="LocalTxt1caBn9"/>
+                            </bootstrapcolumn>
+                            <bootstrapcolumn ariaLabelText="LocalTxt2pcKet" ctrl="BsColumnNPthk" layoutType="BOOTSTRAP_FIELD" uid="5xgmY548">
+<field ariaLabelText="LocalTxt3XrYiH" buttonText="LocalTxtL56wB" ctrl="FldG6Q28" field="drawTo" placeHolderText="LocalTxt6qyxyh" requiredText="LocalTxt4Y87dG" uid="1TwWKQ8p" validationText="LocalTxtOObZf"/>
+<field ariaLabelText="LocalTxt6jNo4B" buttonText="LocalTxt17xLsI" ctrl="Fld15d0z1" field="toPosition" placeHolderText="LocalTxt43dbfn" requiredText="LocalTxt4xbjQs" uid="LwGvwoBB" validationText="LocalTxt5jVvWY"/>
+                            </bootstrapcolumn>
+                        </bootstraprow>
+                        <button ariaLabelText="LocalTxt2qaxzo" buttonText="LocalTxt8Dr0xR" cssClass="btn-warning" ctrl="Buto6q0a" mouseOverText="LocalTxt4sElff" onClickEvent="/Modules/Exercise_4a_Security/Scripts/Events/draw" uid="EuPGPJTN"/>
+                    </bootstrapcolumn>
+                </bootstraprow>
+                <message ctrl="cardsMsg" modifiers="@0" uid="GiH73SZm"/>
+            </bootstrapcontainer>
+        </page>
+    </pageContents>
+</page>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <restResource id="MetaWeather" dateCreated="2020-11-20T19:52:13.929Z">
+        <baseURI>https://www.metaweather.com/api/</baseURI>
+        <endpoints>
+            <endpoint name="" description="" path="" method="GET" requestField="" responseField="" debug="false" responseCode="&amp;&amp;responseStatusCode"/>
+            <endpoint name="SearchLocation" description="" path="/location/search" method="GET" requestField="" responseField="&amp;&amp;responseBody" debug="false" responseCode="&amp;&amp;responseStatusCode">
+                <parameters>
+                    <parameter name="query" value="&amp;&amp;query" queryParam="true"/>
+                </parameters>
+            </endpoint>
+        </endpoints>
+        <fields>
+            <field id="query" required="true"/>
+            <field id="responseBody"/>
+            <field id="responseStatusCode"/>
+        </fields>
+    </restResource>
+</ebase>

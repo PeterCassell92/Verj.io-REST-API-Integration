@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><ebase version="5.3.2">
+        
+    <dbResource database="rest_model_solutions" dateCreated="2018-03-29T13:00:20.114+01:00" id="user">
+                
+        <columns>*</columns>
+                
+        <from>users</from>
+                
+        <where>user_id=&amp;&amp;user_id</where>
+                
+        <fields>
+                        
+            <field id="confirmed" type="SMALLINT"/>
+                        
+            <field id="first_name" length="500" type="VARCHAR"/>
+                        
+            <field id="last_name" length="500" type="VARCHAR"/>
+                        
+            <field id="password" length="500" type="VARCHAR"/>
+                        
+            <field id="user_id" key="true" length="10" required="true" type="INTEGER"/>
+                        
+            <field id="username" length="500" type="VARCHAR"/>
+                    
+        </fields>
+            
+    </dbResource>
+    
+</ebase>

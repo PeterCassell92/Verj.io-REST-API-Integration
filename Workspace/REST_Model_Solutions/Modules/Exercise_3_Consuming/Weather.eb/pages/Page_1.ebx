@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page name="Page_1" pageHeaderTextRef="Txt14WOuC" pageInfoTextReference="Txt9C4292" pageTrailerTextReference="Txt2iXXYO" nextPageTextReference="Txt8cjRiq" prevPageTextReference="Txt84D6qH">
+    <pageContents>
+        <page ariaLabelText="LocalTxt6YRUvp" ctrl="PaguqCBE" outputType="0" pdfFooterText="LocalTxt9wK8Nz" pdfHeaderText="LocalTxt1AfPiI" uid="JYN5WfhB">
+            <bootstrapcontainer ariaLabelText="LocalTxt3zWA8p" ctrl="BsContainer2cUmW" uid="ACkPtegA">
+                <bootstraprow ariaLabelText="LocalTxt6UJAfs" cssClass="py-2" ctrl="BsRowfn9hl" uid="Oqvm8eZe">
+                    <bootstrapcolumn ariaLabelText="LocalTxt7sUxIU" ctrl="BsColumnVbdX1" uid="MrWgzC2S">
+                        <text ctrl="TexyDee1" text="LocalTxt97zD4V" uid="FDDf18gO"/>
+                        <field ariaLabelText="LocalTxt6Inp2j" buttonText="LocalTxt21UJnj" ctrl="FldRXwnL" displayInfoText="false" displayLabelText="false" field="queryLocation" placeHolderText="LocalTxt1YPlym" requiredText="LocalTxtADoe11" uid="E2dAijrT" validationText="LocalTxtGLyOE"/>
+                        <button ariaLabelText="LocalTxt1tlwex" buttonText="LocalTxtZn959" ctrl="ButBfMUG" mouseOverText="LocalTxt4Bzey2" onClickEvent="/Modules/Exercise_3_Consuming/Scripts/Events/searchLocation" uid="BYbjF8sP"/>
+                    </bootstrapcolumn>
+                    <bootstrapcolumn ariaLabelText="LocalTxt18eZTp" ctrl="BsColumnVvip2" uid="AXAeXhQt" verticalAlignment="Center">
+                        <panel ariaLabelText="LocalTxt1hPGTq" cssClass="h4" ctrl="Pan13O8Ac" uid="IEXqPgrL">
+                            <text ctrl="TexzCdfo" text="LocalTxt2CaIHO" uid="AUcULGiC"/>
+                        </panel>
+                        <panel ariaLabelText="LocalTxt4TZk2Q" ctrl="PanzXXLU" uid="4HBI7l67">
+                            <text cssClass="small" ctrl="TexV3tSQ" text="LocalTxt8Xd8N1" uid="PowiwtHN"/>
+                        </panel>
+                    </bootstrapcolumn>
+                </bootstraprow>
+                <bootstraprow ariaLabelText="LocalTxt5WEiot" cssClass="py-2" ctrl="BsRowJ5Uvq" uid="2vZT7KVY">
+                    <bootstrapcolumn ariaLabelText="LocalTxt9pgr6K" ctrl="BsColumnoBQY5" uid="RFB6RUBC">
+                        <panel ariaLabelText="LocalTxt5ABUKL" cssClass="py-2" ctrl="PanptJUf" uid="KwuhOoGv">
+                            <text ctrl="TexLrdEE" text="LocalTxtApsAaR" uid="P3cL3CYb"/>
+                        </panel>
+                        <button ariaLabelText="LocalTxt64Jm1y" buttonText="LocalTxt9vJPqv" ctrl="ButzSOgA" mouseOverText="LocalTxtkmwd1" onClickEvent="/Modules/Exercise_3_Consuming/Scripts/Events/getWeatherInLocation" uid="6y7J4GsS"/>
+                    </bootstrapcolumn>
+                    <bootstrapcolumn ariaLabelText="LocalTxt1fV2U5" ctrl="BsColumnJgNjt" uid="RRvuB8qg" verticalAlignment="Center">
+                        <field ariaLabelText="LocalTxt7ETgca" buttonText="LocalTxt31a3zd" ctrl="FldbrmHQ" displayInfoText="false" displayOnly="true" editorClass="h4" field="weatherResponse" placeHolderText="LocalTxt4zlTPJ" requiredText="LocalTxt1EifUQ" uid="RIfEIb0d" validationText="LocalTxtdzAzI"/>
+                    </bootstrapcolumn>
+                </bootstraprow>
+            </bootstrapcontainer>
+        </page>
+    </pageContents>
+</page>

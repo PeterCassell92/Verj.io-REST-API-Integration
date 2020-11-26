@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.9.0">
+    <restResource id="GithubOAuth" dateCreated="2020-11-25T14:58:06.182Z">
+        <baseURI>https://api.github.com</baseURI>
+        <endpoints>
+            <endpoint name="CreateRepository" description="" path="/user/repos" method="POST" requestField="&amp;&amp;requestBody" responseField="&amp;&amp;responseBody" debug="true" responseCode="&amp;&amp;responseStatusCode">
+                <requestHeaders>
+                    <requestHeader name="Content-Type" value="application/x-www-form-urlencoded"/>
+                </requestHeaders>
+                <endpointSecurity httpBasicAuthenticationUsername="" httpAuthenticationType="Basic Authentication" oAuthAuthenticationEnabled="true" oAuthConfigName="Github" oAuthScope="" oAuthUsername=""/>
+            </endpoint>
+        </endpoints>
+        <fields>
+            <field id="requestBody"/>
+            <field id="responseBody"/>
+            <field id="responseStatusCode"/>
+        </fields>
+    </restResource>
+</ebase>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ebase version="5.5.1">
+    <presentationTemplate id="REST_Model_Solutions_Bootstrap4" dateCreated="2017-11-17T15:01:24.579Z" framework="Bootstrap 4" jspRightWidth="0" jspLeftWidth="0" useFormHeader="false" formPanelWidth="100%">
+        <htmlPlusPlus>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot; href=&quot;REST_Model_Solutions_/images/icons/apple-touch-icon.png&quot;&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;REST_Model_Solutions_/images/icons/favicon-32x32.png&quot;&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;16x16&quot; href=&quot;REST_Model_Solutions_/images/icons/favicon-16x16.png&quot;&gt;
+&lt;link rel=&quot;mask-icon&quot; href=&quot;REST_Model_Solutions_/images/icons/safari-pinned-tab.svg&quot; color=&quot;#b5bd00&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;REST_Model_Solutions_/images/icons/favicon.ico&quot;&gt;
+&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#2b5797&quot;&gt;
+&lt;meta name=&quot;msapplication-config&quot; content=&quot;REST_Model_Solutions_/images/icons/browserconfig.xml&quot;&gt;</htmlPlusPlus>
+        <clientScripts>
+            <clientScript path="https://code.jquery.com/jquery-3.2.1.min.js"/>
+            <clientScript path="$ws/Modules/Shared/Client/JavaScript/utility.js" defer="true"/>
+            <clientScript path="$ws/Modules/Shared/Client/JavaScript/verj.js"/>
+            <clientScript path="$ws/Modules/Shared/Client/JavaScript/header.js"/>
+            <clientScript path="$ws/Modules/Shared/Client/Bootstrap Source/dist/js/bootstrap.bundle.min.js" defer="true"/>
+            <clientScript path="https://use.fontawesome.com/releases/v5.0.8/js/all.js" async="true" defer="true"/>
+        </clientScripts>
+        <styleSheets>
+            <styleSheet ref="$ws/Modules/Shared/Client/SCSS/style.scss" relation="stylesheet" media="all"/>
+        </styleSheets>
+        <propertySets>
+            <fieldTable addRowClass="btn btn-secondary" ctrl="REST_Model_Solutions_TableEdit" navigationAlignBottom="R" numVisibleRows="0" showInfoMessage="false" tableGridClass="table table-striped table-hover" tableRowDataStyle="padding-left:5px;padding-top:5px;padding-bottom:5px;">
+                <tableCellStyleProperties textColor="#666666"/>
+                <tableStyleProperties topMargin="10px"/>
+            </fieldTable>
+            <fieldTable addRowClass="btn btn-primary" ctrl="striped-hover-responsive" default="true" navigationAlignBottom="R" numVisibleRows="0" showInfoMessage="false" tableGridClass="table table-striped table-hover"/>
+            <horizontalMenu cssClass="nav" ctrl="horizontal-menu" default="true" hoverStyle="color:#0056b3;&#xA;" itemClass="nav-item" itemStyle="color:#007bff;&#xA;" leafClass="nav-item" leafHoverStyle="color:#0056b3;&#xA;" leafSelectedClass="nav-item" leafSelectedStyle="color:#007bff;font-weight:600;" leafStyle="color:#007bff;&#xA;" selectedClass="nav-item" selectedStyle="color:#007bff;&#xA;" topLevelClass="nav-item" topLevelHoverStyle="color:#0056b3;&#xA;" topLevelLeafClass="nav-item" topLevelLeafHoverStyle="color:#0056b3;&#xA;" topLevelLeafSelectedClass="nav-item" topLevelLeafSelectedStyle="color:#007bff;font-weight:600;" topLevelLeafStyle="color:#007bff;&#xA;" topLevelSelectedClass="nav-item" topLevelSelectedStyle="color:#007bff;&#xA;" topLevelStyle="color:#007bff;&#xA;" topMargin="5px">
+                <globalLevel>
+                    <itemPadding allPadding="@0" bottomPadding="0px" leftPadding="10px" rightPadding="10px" topPadding="0px"/>
+                </globalLevel>
+            </horizontalMenu>
+            <prevPageButton bootstrapStyle="Primary" ctrl="default" default="true"/>
+            <finishButton bootstrapStyle="Primary" ctrl="default" default="true"/>
+            <nextPageButton bootstrapStyle="Primary" ctrl="default" default="true"/>
+            <button bootstrapStyle="Primary" ctrl="btn" default="true"/>
+            <tab ctrl="tab1" default="true">
+                <hoverState color="#eeeeee"/>
+                <selectedState color="#007bff" textColor="#fff"/>
+            </tab>
+            <text cssClass="h3 d-block" ctrl="header-3"/>
+            <text cssClass="h4 d-block" ctrl="header-4"/>
+            <text cssClass="h5 d-block" ctrl="header-5"/>
+            <text cssClass="mb-3 d-block" ctrl="paragraph"/>
+            <text cssClass="mb-3 lead d-block" ctrl="paragraph-lead"/>
+            <text ctrl="text" default="true"/>
+            <panel cssClass="btn-group" ctrl="button-group">
+                <rootHtmlElementProperties customAttributes="role=&quot;group&quot;"/>
+            </panel>
+            <panel cssClass="btn-toolbar" ctrl="button-toolbar">
+                <rootHtmlElementProperties customAttributes="role=&quot;toolbar&quot;"/>
+            </panel>
+            <panel ctrl="input-group-append" layoutType="CUSTOM">
+                <layoutProperties>
+                    <CUSTOM template="#set ($MINIMAL_HTML = true)&#xA;#foreach( $ctrl in $child_controls )&#xA;  ## Write out any pending messages&#xA;  #if ( $ctrl.messagesShowing )&#xA;  &#x9;$MESSAGES&#xA;  #end&#xA;  ## Only write a control if it's not hidden&#xA;  #if ( $ctrl.showing )&#xA;    ## For Field Controls, $LABEL, $EDITOR and $HELP can be separately configured&#xA;    #if ($ctrl.elementType == &quot;Field Control&quot;)&#xA;  &#x9;&#x9;$FIELD_HEADER&#xA;&#x9;    &#x9;## For list fields, the list items can be separately configured using $LIST_BUTTON and $LIST_LABEL&#xA;&#x9;      #if ($ctrl.editableRadioOrCheckboxList)&#xA;&#x9;      &#x9;## Write out the field label&#xA;&#x9;&#x9;      &lt;label style=&quot;display:block;&quot;&gt;$LABEL&lt;/label&gt;&#xA;&#x9;      &#x9;$LIST_HEADER&#xA;&#x9;        #foreach( $list_item in $list_items )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;div class=&quot;form-check $ctrl.editorCellClass&quot;&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$LIST_BUTTON $LIST_LABEL&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;/div&gt;&#xA;&#x9;        #end&#xA;&#x9;      &#x9;$LIST_TRAILER&#xA;&#x9;      &#x9;## Write out field help&#xA;&#x9;    &#x9;&#x9;&lt;small class=&quot;text-muted&quot;&gt;$HELP&lt;/small&gt;&#xA;&#x9;      #else&#xA;&#x9;&#x9;      ## Write out the field label&#xA;&#x9;&#x9;      $LABEL&#xA;&#x9;&#x9;      &lt;div class=&quot;input-group&quot;&gt;&#xA;&#x9;&#x9;        ## Write out the field editor for non-list fields&#xA;&#x9;&#x9;        $EDITOR&#xA;&#x9;&#x9;      &#x9;## Write out field help&#xA;&#x9;&#x9;    &#x9;&#x9;&lt;div class=&quot;input-group-append&quot;&gt;&#xA;&#x9;&#x9;    &#x9;&#x9;&#x9;&lt;span class=&quot;input-group-text&quot;&gt;$HELP&lt;/span&gt;&#xA;&#x9;&#x9;    &#x9;&#x9;&lt;/div&gt;&#xA;&#x9;    &#x9;&#x9;&lt;/div&gt;&#xA;      &#x9;#end&#xA;    &#x9;$FIELD_TRAILER&#xA;    #else&#xA;      ## Write all controls excluding Field Controls&#xA;      $CONTROL&#xA;    #end&#xA;  #end&#xA;#end"/>
+                </layoutProperties>
+            </panel>
+            <panel ctrl="input-group-prepend" layoutType="CUSTOM">
+                <layoutProperties>
+                    <CUSTOM template="#set ($MINIMAL_HTML = true)&#xA;#foreach( $ctrl in $child_controls )&#xA;  ## Write out any pending messages&#xA;  #if ( $ctrl.messagesShowing )&#xA;  &#x9;$MESSAGES&#xA;  #end&#xA;  ## Only write a control if it's not hidden&#xA;  #if ( $ctrl.showing )&#xA;    ## For Field Controls, $LABEL, $EDITOR and $HELP can be separately configured&#xA;    #if ($ctrl.elementType == &quot;Field Control&quot;)&#xA;  &#x9;&#x9;$FIELD_HEADER&#xA;&#x9;    &#x9;## For list fields, the list items can be separately configured using $LIST_BUTTON and $LIST_LABEL&#xA;&#x9;      #if ($ctrl.editableRadioOrCheckboxList)&#xA;&#x9;      &#x9;## Write out the field label&#xA;&#x9;&#x9;      &lt;label style=&quot;display:block;&quot;&gt;$LABEL&lt;/label&gt;&#xA;&#x9;     &#x9;&#x9;$LIST_HEADER&#xA;&#x9;        #foreach( $list_item in $list_items )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;div class=&quot;form-check $ctrl.editorCellClass&quot;&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;$LIST_BUTTON $LIST_LABEL&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;/div&gt;&#xA;&#x9;        #end&#xA;&#x9;      &#x9;$LIST_TRAILER&#xA;&#x9;      &#x9;## Write out field help&#xA;&#x9;    &#x9;&#x9;&lt;small class=&quot;text-muted&quot;&gt;$HELP&lt;/small&gt;&#xA;&#x9;      #else&#xA;&#x9;&#x9;      ## Write out the field label&#xA;&#x9;&#x9;      $LABEL&#xA;&#x9;&#x9;      &lt;div class=&quot;input-group&quot;&gt;&#xA;&#x9;&#x9;      &#x9;## Write out field help&#xA;&#x9;&#x9;    &#x9;&#x9;&lt;div class=&quot;input-group-prepend&quot;&gt;&#xA;&#x9;&#x9;    &#x9;&#x9;&#x9;&lt;span class=&quot;input-group-text&quot;&gt;$HELP&lt;/span&gt;&#xA;&#x9;&#x9;    &#x9;&#x9;&lt;/div&gt;&#xA;&#x9;&#x9;        ## Write out the field editor for non-list fields&#xA;&#x9;&#x9;        $EDITOR&#xA;&#x9;    &#x9;&#x9;&lt;/div&gt;&#xA;      &#x9;#end&#xA;    &#x9;$FIELD_TRAILER&#xA;    #else&#xA;      ## Write all controls excluding Field Controls&#xA;      $CONTROL&#xA;    #end&#xA;  #end&#xA;#end"/>
+                </layoutProperties>
+            </panel>
+            <panel cssClass="tab-pane fade" ctrl="tab-pane">
+                <rootHtmlElementProperties customAttributes="role=&quot;tabpanel&quot;"/>
+            </panel>
+            <saveButton bootstrapStyle="Primary" ctrl="default" default="true"/>
+            <fieldColumn ctrl="tableEditDeleteRow" textSize="0.75em" vAlign="Center" width="33%">
+                <stripeProperties textSize="0.75em" vAlign="Center"/>
+            </fieldColumn>
+            <image cssClass="img-fluid" ctrl="fluid" default="true"/>
+            <hyperlink cssClass="close" ctrl="close-button">
+                <rootHtmlElementProperties customAttributes="data-dismiss=&quot;modal&quot;"/>
+            </hyperlink>
+            <hyperlink ctrl="collapse">
+                <rootHtmlElementProperties customAttributes="data-toggle=&quot;collapse&quot;"/>
+            </hyperlink>
+            <hyperlink cssClass="btn dropdown-toggle" ctrl="dropdown">
+                <rootHtmlElementProperties customAttributes="data-toggle=&quot;dropdown&quot;"/>
+            </hyperlink>
+            <hyperlink cssClass="dropdown-item" ctrl="dropdown-item"/>
+            <hyperlink cssClass="nav-link" ctrl="nav-link"/>
+            <listItem cssClass="nav-item" ctrl="nav-item" default="true"/>
+            <verticalMenu cssClass="nav" ctrl="vertical-menu" default="true" hoverStyle="color:#0056b3;&#xA;" itemClass="nav-item" itemStyle="color:#007bff;&#xA;" leafClass="nav-item" leafHoverStyle="color:#0056b3;&#xA;" leafSelectedClass="nav-item" leafSelectedStyle="color:#007bff;font-weight:600;" leafStyle="color:#007bff;&#xA;" numberOfLevels="3" rightPadding="5px" secondLevelClass="nav-item" secondLevelHoverStyle="color:#0056b3;&#xA;" secondLevelLeafClass="nav-item" secondLevelLeafHoverStyle="color:#0056b3;&#xA;" secondLevelLeafSelectedClass="nav-item" secondLevelLeafSelectedStyle="color:#007bff;font-weight:600;" secondLevelLeafStyle="color:#007bff;&#xA;" secondLevelSelectedClass="nav-item" secondLevelSelectedStyle="color:#007bff;&#xA;" secondLevelStyle="color:#007bff;&#xA;" selectedClass="nav-item" selectedStyle="color:#007bff;&#xA;" thirdLevelClass="nav-item" thirdLevelHoverStyle="color:#0056b3;&#xA;" thirdLevelLeafClass="nav-item" thirdLevelLeafHoverStyle="color:#0056b3;&#xA;" thirdLevelLeafSelectedClass="nav-item" thirdLevelLeafSelectedStyle="color:#007bff;font-weight:600;" thirdLevelLeafStyle="color:#007bff;&#xA;" thirdLevelSelectedClass="nav-item" thirdLevelSelectedStyle="color:#007bff;&#xA;" thirdLevelStyle="color:#007bff;&#xA;" topLevelClass="nav-item" topLevelHoverStyle="color:#0056b3;&#xA;" topLevelLeafClass="nav-item" topLevelLeafHoverStyle="color:#0056b3;&#xA;" topLevelLeafSelectedClass="nav-item" topLevelLeafSelectedStyle="color:#007bff;font-weight:600;" topLevelLeafStyle="color:#007bff;&#xA;" topLevelSelectedClass="nav-item" topLevelSelectedStyle="color:#007bff;&#xA;" topLevelStyle="color:#007bff;&#xA;">
+                <globalLevel>
+                    <itemPadding allPadding="2px"/>
+                </globalLevel>
+                <secondLevel>
+                    <itemPadding leftPadding="12px"/>
+                </secondLevel>
+                <thirdLevel>
+                    <itemPadding leftPadding="24px"/>
+                </thirdLevel>
+            </verticalMenu>
+            <restoreButton bootstrapStyle="Primary" ctrl="default" default="true"/>
+            <nav ctrl="breadcrumb">
+                <rootHtmlElementProperties customAttributes="role=&quot;navigation&quot;"/>
+            </nav>
+            <nav cssClass="nav" ctrl="nav" default="true"/>
+            <nav cssClass="nav nav-pills" ctrl="nav-pills"/>
+            <nav cssClass="nav nav-tabs" ctrl="nav-tabs"/>
+            <nav cssClass="nav flex-column" ctrl="nav-vertical"/>
+            <nav cssClass="navbar navbar-dark bg-dark navbar-expand-sm" ctrl="navbar"/>
+            <listPanel cssClass="nav" ctrl="nav" default="true"/>
+            <message ctrl="alert" default="true" errorMsgClass="alert alert-danger d-block" infoMsgClass="alert alert-info d-block" warningMsgClass="alert alert-warning d-block">
+                <errorMessageStyle backgroundColor="@0" textColor="@0"/>
+                <rootHtmlElementProperties customAttributes="role=&quot;alert&quot;"/>
+                <warningMessageStyle backgroundColor="@0" textColor="@0"/>
+            </message>
+            <list cssClass="nav" ctrl="nav"/>
+            <buttonColumn ctrl="default" default="true"/>
+            <field ctrl="field" default="true" helpClass="small text-muted" helpPos="2" vAlign="@0"/>
+            <field ctrl="large-field" fieldClass="form-control-lg" helpClass="small text-muted" helpPos="2"/>
+            <field ctrl="small-field" fieldClass="form-control-sm" helpClass="small text-muted" helpPos="2"/>
+            <page bootstrapContainerType="Centered" ctrl="centered" errorMsgClass="alert alert-danger d-block" infoMsgClass="alert alert-info d-block" outputType="0" warningMsgClass="alert alert-warning d-block">
+                <errorMessageStyle backgroundColor="@0" textColor="@0"/>
+                <rootHtmlElementProperties idLocator="page" jQueryEventHandlers="$;ready;verj.pageReady();"/>
+                <warningMessageStyle backgroundColor="@0" textColor="@0"/>
+            </page>
+            <page ctrl="default" default="true" errorMsgClass="alert alert-danger d-block" infoMsgClass="alert alert-info d-block" outputType="0" warningMsgClass="alert alert-warning d-block">
+                <errorMessageStyle backgroundColor="@0" textColor="@0"/>
+                <rootHtmlElementProperties idLocator="page" jQueryEventHandlers="$;ready;verj.pageReady();"/>
+                <warningMessageStyle backgroundColor="@0" textColor="@0"/>
+            </page>
+            <page bootstrapContainerType="Full Width" ctrl="full-width" errorMsgClass="alert alert-danger d-block" infoMsgClass="alert alert-info d-block" outputType="0" warningMsgClass="alert alert-warning d-block">
+                <errorMessageStyle backgroundColor="@0" textColor="@0"/>
+                <rootHtmlElementProperties idLocator="page" jQueryEventHandlers="$;ready;verj.pageReady();"/>
+                <warningMessageStyle backgroundColor="@0" textColor="@0"/>
+            </page>
+            <tabSet ctrl="tabset1" default="true" spaceBetweenTabs="0.2em" tabBorderColor="#77A6D1">
+                <allState bottomPadding="0.5em" leftPadding="2em" rightPadding="2.5em" topPadding="0.5em"/>
+                <contentPanel allPadding="1em"/>
+            </tabSet>
+            <bootstrapcolumn ctrl="col-sm" default="true" smallWidth="-2"/>
+            <repeater ctrl="default" default="true" maxNumberOfResultPages="5" navigationAlignBottom="R"/>
+        </propertySets>
+    </presentationTemplate>
+</ebase>
